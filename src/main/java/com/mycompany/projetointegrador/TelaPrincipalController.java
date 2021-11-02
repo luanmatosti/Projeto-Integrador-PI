@@ -5,9 +5,13 @@
  */
 package com.mycompany.projetointegrador;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.BorderPane;
 
 /**
  * FXML Controller class
@@ -16,6 +20,9 @@ import javafx.fxml.Initializable;
  */
 public class TelaPrincipalController implements Initializable {
 
+    @FXML
+    private BorderPane container;
+
     /**
      * Initializes the controller class.
      */
@@ -23,5 +30,30 @@ public class TelaPrincipalController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void abrirCadastrarCliente(ActionEvent event) throws IOException {
+        App.setRoot("CadastrarCliente", container);
+    }
+
+    @FXML
+    private void abrirConsultarCliente(ActionEvent event) {
+    }
+
+    @FXML
+    private void abrirCadastrarItens(ActionEvent event) {
+    }
+
+    @FXML
+    private void abrirConsultarItens(ActionEvent event) {
+    }
+
+    @FXML
+    private void abrirVenda(ActionEvent event) {
+    }
+
+    @FXML
+    private void abrirRelatorio(ActionEvent event) {
+    }
     
 }

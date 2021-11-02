@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import javafx.scene.layout.BorderPane;
 
 /**
  * JavaFX App
@@ -22,8 +23,8 @@ public class App extends Application {
         stage.show();
     }
 
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
+    static void setRoot(String fxml, BorderPane container) throws IOException {
+        container.setCenter(loadFXML(fxml));
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
