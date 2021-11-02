@@ -37,23 +37,28 @@ public class TelaPrincipalController implements Initializable {
     }
 
     @FXML
-    private void abrirConsultarCliente(ActionEvent event) {
+    private void abrirConsultarCliente(ActionEvent event) throws IOException {
+        App.setRoot("ConsultarCliente", container);
     }
 
     @FXML
-    private void abrirCadastrarItens(ActionEvent event) {
+    private void abrirCadastrarItens(ActionEvent event) throws IOException {
+        App.setRoot("CadastrarItem", container);
     }
 
     @FXML
-    private void abrirConsultarItens(ActionEvent event) {
+    private void abrirConsultarItens(ActionEvent event) throws IOException {
+        App.setRoot("ConsultarItem", container);
     }
 
     @FXML
-    private void abrirVenda(ActionEvent event) {
+    private void abrirVenda(ActionEvent event) throws IOException {
+        App.setRoot("Venda", container);
     }
 
     @FXML
-    private void abrirRelatorio(ActionEvent event) {
+    private void abrirRelatorio(ActionEvent event) throws IOException {
+        App.setRoot("Relatorio", container);
     }
     
 }
