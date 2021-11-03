@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 
 /**
@@ -18,8 +19,12 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("TelaPrincipal"), 700, 480);
+        scene = new Scene(loadFXML("TelaPrincipal"), 700, 455);
         stage.setScene(scene);
+        stage.setMinWidth(700);
+        stage.setMinHeight(455);
+        stage.setTitle("Livraria Saber");
+        stage.getIcons().add(new Image("/com/mycompany/projetointegrador/imagens/iconelivropagina.png"));
         stage.show();
     }
 

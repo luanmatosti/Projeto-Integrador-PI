@@ -9,14 +9,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="455.0" prefWidth="700.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="com.mycompany.projetointegrador.ConsultarClienteController">
+<AnchorPane id="AnchorPane" prefHeight="430.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projetointegrador.ConsultarClienteController">
    <children>
       <TitledPane animated="false" collapsible="false" layoutX="16.0" layoutY="18.0" prefHeight="416.0" prefWidth="633.0" text="Consultar cliente" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="390.0" prefWidth="662.0">
                <children>
-                  <TableView layoutX="20.6" layoutY="47.0" prefHeight="318.0" prefWidth="659.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0">
+                  <TableView layoutX="27.6" layoutY="47.0" prefHeight="293.0" prefWidth="644.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <columns>
                         <TableColumn prefWidth="46.0" text="Nome" />
                         <TableColumn prefWidth="77.0" text="Sobrenome" />
@@ -35,9 +34,9 @@
                   </Label>
                   <TextField layoutX="66.0" layoutY="17.0" prefHeight="25.0" prefWidth="501.0" />
                   <Button layoutX="512.0" layoutY="17.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" text="Consultar" AnchorPane.rightAnchor="2.0" />
-                  <Button layoutX="546.0" layoutY="372.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: #eb7571;" text="Apagar" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="2.0" />
-                  <Button layoutX="14.0" layoutY="372.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text=" Limpar pesquisa" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" />
-                  <Button layoutX="414.0" layoutY="376.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Editar" />
+                  <Button layoutX="538.0" layoutY="352.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: #eb7571;" text="Apagar" />
+                  <Button layoutX="14.0" layoutY="352.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text=" Limpar pesquisa" />
+                  <Button layoutX="408.0" layoutY="352.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Editar" />
                </children>
             </AnchorPane>
          </content>
