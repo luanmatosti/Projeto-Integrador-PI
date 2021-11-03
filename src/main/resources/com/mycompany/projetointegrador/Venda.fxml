@@ -15,22 +15,22 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="320.0" prefWidth="148.0">
                <children>
-                  <TextField layoutX="7.0" layoutY="23.0" prefHeight="25.0" prefWidth="129.0" promptText="Código do Produto" />
-                  <TextField layoutX="9.0" layoutY="124.0" prefHeight="25.0" prefWidth="129.0" promptText="Quantidade" />
-                  <TextField layoutX="9.0" layoutY="174.0" prefHeight="25.0" prefWidth="129.0" promptText="Preço unitário" />
-                  <Label layoutX="8.0" layoutY="6.0" text="Código do Produto" />
-                  <Label layoutX="10.0" layoutY="107.0" text="Quantidade" />
-                  <Label layoutX="11.0" layoutY="157.0" text="Preço unitário" />
-                  <Label layoutX="10.0" layoutY="243.0" prefHeight="17.0" prefWidth="63.0" text="Cliente" />
-                  <Button layoutX="36.0" layoutY="211.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="72.0" text="Adicionar" />
-                  <Label layoutX="7.0" layoutY="55.0" text="Produto" />
-                  <TextField layoutX="7.0" layoutY="72.0" prefHeight="25.0" prefWidth="129.0" promptText="Produto" />
-                  <TextField layoutX="9.0" layoutY="260.0" prefHeight="25.0" prefWidth="129.0" promptText="CPF" />
+                  <Label layoutX="10.0" layoutY="7.0" text="Código do Produto" />
+                  <TextField layoutX="10.0" layoutY="29.0" prefHeight="25.0" prefWidth="129.0" promptText="Código do Produto" />
+                  <Label layoutX="10.0" layoutY="59.0" text="Quantidade" />
+                  <TextField layoutX="10.0" layoutY="81.0" prefHeight="25.0" prefWidth="129.0" promptText="Quantidade" />
+                  <Label layoutX="10.0" layoutY="111.0" text="Preço unitário" />
+                  <TextField layoutX="10.0" layoutY="133.0" prefHeight="25.0" prefWidth="129.0" promptText="Preço unitário" />
+                  <Label layoutX="10.0" layoutY="163.0" text="Produto" />
+                  <TextField layoutX="10.0" layoutY="185.0" prefHeight="25.0" prefWidth="129.0" promptText="Produto" />
+                  <Button layoutX="10.0" layoutY="215.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="72.0" text="Adicionar" />
+                  <Label layoutX="10.0" layoutY="245.0" prefHeight="17.0" prefWidth="63.0" text="Cliente" />
+                  <TextField layoutX="10.0" layoutY="267.0" prefHeight="25.0" prefWidth="129.0" promptText="CPF" />
                </children>
             </AnchorPane>
          </content>
       </TitledPane>
-      <TableView layoutX="164.0" layoutY="14.0" prefHeight="373.0" prefWidth="528.0" AnchorPane.leftAnchor="164.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0">
+      <TableView layoutX="585.0" layoutY="14.0" prefHeight="379.0" prefWidth="528.0" AnchorPane.leftAnchor="164.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0">
          <columns>
             <TableColumn prefWidth="75.0" text="Código" />
             <TableColumn prefWidth="75.0" text="Produto" />
