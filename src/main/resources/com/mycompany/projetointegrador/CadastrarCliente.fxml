@@ -18,21 +18,7 @@
                <children>
                   <Label layoutX="13.0" layoutY="16.0" prefHeight="17.0" prefWidth="104.0" text="Dados Pessoais:" />
                   <Label layoutX="13.0" layoutY="157.0" text="Endereço:" />
-                  <MenuButton layoutX="11.0" layoutY="104.0" mnemonicParsing="false" text="Gênero:">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                     </items>
-                  </MenuButton>
-                  <MenuButton layoutX="95.0" layoutY="104.0" mnemonicParsing="false" text="Estado Civil:">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                     </items>
-                  </MenuButton>
                   <Label layoutX="16.0" layoutY="271.0" text="Contato:" />
-                  <Button layoutX="611.0" layoutY="341.0" mnemonicParsing="false" text="Cadastrar" />
-                  <Button layoutX="552.0" layoutY="341.0" mnemonicParsing="false" text="Limpar" />
                   <HBox layoutX="30.6" layoutY="185.0" prefHeight="28.0" prefWidth="566.0" spacing="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <children>
                         <TextField prefHeight="25.0" prefWidth="81.0" promptText="CEP" HBox.hgrow="ALWAYS" />
@@ -66,6 +52,28 @@
                      <children>
                         <TextField prefHeight="25.0" prefWidth="147.0" promptText="Nome" HBox.hgrow="ALWAYS" />
                         <TextField prefHeight="25.0" prefWidth="388.0" promptText="Sobrenome" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="19.6" layoutY="95.0" prefHeight="27.0" prefWidth="206.0" spacing="14.0" AnchorPane.leftAnchor="0.0">
+                     <children>
+                        <MenuButton mnemonicParsing="false" text="Gênero:" HBox.hgrow="ALWAYS">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Action 1" />
+                              <MenuItem mnemonicParsing="false" text="Action 2" />
+                           </items>
+                        </MenuButton>
+                        <MenuButton mnemonicParsing="false" text="Estado Civil:" HBox.hgrow="ALWAYS">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Action 1" />
+                              <MenuItem mnemonicParsing="false" text="Action 2" />
+                           </items>
+                        </MenuButton>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="204.0" layoutY="325.0" prefHeight="32.0" prefWidth="136.0" spacing="14.0" AnchorPane.rightAnchor="0.0">
+                     <children>
+                        <Button mnemonicParsing="false" text="Limpar" HBox.hgrow="ALWAYS" />
+                        <Button mnemonicParsing="false" text="Cadastrar" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                </children>

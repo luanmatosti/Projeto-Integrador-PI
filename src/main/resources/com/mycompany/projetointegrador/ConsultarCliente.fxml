@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="430.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projetointegrador.ConsultarClienteController">
@@ -15,28 +16,44 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="390.0" prefWidth="662.0">
                <children>
-                  <TableView layoutX="27.6" layoutY="47.0" prefHeight="293.0" prefWidth="644.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                     <columns>
-                        <TableColumn prefWidth="46.0" text="Nome" />
-                        <TableColumn prefWidth="77.0" text="Sobrenome" />
-                        <TableColumn prefWidth="56.0" text="Tel Principal" />
-                        <TableColumn prefWidth="75.0" text="E-mail" />
-                        <TableColumn prefWidth="50.0" text="CPF" />
-                     </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                  </TableView>
-                  <Label layoutX="14.0" layoutY="12.0" text="CPF: " AnchorPane.leftAnchor="2.0">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <TextField layoutX="66.0" layoutY="17.0" prefHeight="25.0" prefWidth="501.0" />
-                  <Button layoutX="512.0" layoutY="17.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" text="Consultar" AnchorPane.rightAnchor="2.0" />
-                  <Button layoutX="538.0" layoutY="352.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: #eb7571;" text="Apagar" />
-                  <Button layoutX="14.0" layoutY="352.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text=" Limpar pesquisa" />
-                  <Button layoutX="408.0" layoutY="352.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Editar" />
+                  <HBox layoutX="4.0" layoutY="50.0" prefHeight="297.0" prefWidth="675.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+                     <children>
+                        <TableView prefHeight="297.0" prefWidth="695.0" HBox.hgrow="ALWAYS">
+                           <columns>
+                              <TableColumn prefWidth="46.0" text="Nome" />
+                              <TableColumn prefWidth="77.0" text="Sobrenome" />
+                              <TableColumn prefWidth="56.0" text="Tel Principal" />
+                              <TableColumn prefWidth="75.0" text="E-mail" />
+                              <TableColumn prefWidth="50.0" text="CPF" />
+                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="407.0" layoutY="352.0" prefHeight="26.0" prefWidth="265.0" spacing="14.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Editar" HBox.hgrow="ALWAYS" />
+                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: #eb7571;" text="Apagar" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="19.6" layoutY="350.0" prefHeight="27.0" prefWidth="139.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text=" Limpar pesquisa" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="5.0" layoutY="13.0" prefHeight="37.0" prefWidth="672.0" spacing="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label text="CPF: " HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField prefHeight="25.0" prefWidth="501.0" HBox.hgrow="ALWAYS" />
+                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" text="Consultar" />
+                     </children>
+                  </HBox>
                </children>
             </AnchorPane>
          </content>
