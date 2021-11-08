@@ -17,23 +17,25 @@
                <children>
                   <HBox layoutX="17.0" layoutY="14.0" prefHeight="34.0" prefWidth="664.0" spacing="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <children>
-                        <TextField promptText="Nome do autor" HBox.hgrow="ALWAYS" />
-                        <TextField promptText="Título do livro" HBox.hgrow="ALWAYS" />
-                        <TextField promptText="Editora do livro" HBox.hgrow="ALWAYS" />
-                        <DatePicker promptText="Data da publicação" HBox.hgrow="ALWAYS" />
+                        <TextField fx:id="txtAutor" promptText="Nome do autor" HBox.hgrow="ALWAYS" />
+                        <TextField fx:id="txtTitulo" promptText="Título do livro" HBox.hgrow="ALWAYS" />
+                        <TextField fx:id="txtEditora" promptText="Editora do livro" HBox.hgrow="ALWAYS" />
+                        <DatePicker fx:id="dtPublicacao" promptText="Data da publicação" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
-                  <HBox layoutX="123.0" layoutY="75.0" prefHeight="27.0" prefWidth="220.0" spacing="14.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="340.0">
+                  <HBox layoutX="139.6" layoutY="75.0" prefHeight="27.0" prefWidth="374.0" spacing="14.0" AnchorPane.leftAnchor="139.6" AnchorPane.rightAnchor="174.79999999999995">
                      <children>
-                        <TextField prefHeight="25.0" prefWidth="51.0" HBox.hgrow="ALWAYS" />
-                        <ComboBox prefWidth="150.0" promptText="Gênero literário" HBox.hgrow="ALWAYS" />
+                        <TextField fx:id="txtPagina" prefHeight="25.0" prefWidth="51.0" HBox.hgrow="ALWAYS" />
+                        <ComboBox fx:id="comboGeneroLiterario" prefWidth="150.0" promptText="Gênero literário" HBox.hgrow="ALWAYS" />
+                        <Label text="Preço: " HBox.hgrow="ALWAYS" />
+                        <TextField fx:id="txtPreco" prefHeight="25.0" prefWidth="44.0" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                   <Label layoutX="12.0" layoutY="80.0" text="Número de páginas: " />
                   <HBox layoutX="14.0" layoutY="119.0" prefHeight="28.0" prefWidth="134.0" spacing="14.0" AnchorPane.leftAnchor="0.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Limpar" HBox.hgrow="ALWAYS" />
-                        <Button mnemonicParsing="false" text="Cadastrar" HBox.hgrow="ALWAYS" />
+                        <Button mnemonicParsing="false" onAction="#limpar" text="Limpar" HBox.hgrow="ALWAYS" />
+                        <Button mnemonicParsing="false" onAction="#cadastrar" text="Cadastrar" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                </children>
