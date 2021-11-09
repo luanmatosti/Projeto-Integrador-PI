@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  * FXML Controller class
@@ -22,17 +23,17 @@ import javafx.scene.control.TextField;
 public class ConsultarClienteController implements Initializable {
 
     @FXML
-    private TableView<?> tableCliente;
+    private TableView<LinhaTabelaCliente> tableCliente;
     @FXML
-    private TableColumn<?, ?> colunaNome;
+    private TableColumn<LinhaTabelaCliente, String> colunaNome;
     @FXML
-    private TableColumn<?, ?> colunaSobrenome;
+    private TableColumn<LinhaTabelaCliente, String> colunaSobrenome;
     @FXML
-    private TableColumn<?, ?> colunaTelPrincipal;
+    private TableColumn<LinhaTabelaCliente, String> colunaTelPrincipal;
     @FXML
-    private TableColumn<?, ?> colunaEmail;
+    private TableColumn<LinhaTabelaCliente, String> colunaEmail;
     @FXML
-    private TableColumn<?, ?> colunaCpf;
+    private TableColumn<LinhaTabelaCliente, String> colunaCpf;
     @FXML
     private TextField txtCpf;
 
@@ -41,7 +42,14 @@ public class ConsultarClienteController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        colunaNome.setCellValueFactory(new PropertyValueFactory("nome"));
+        colunaSobrenome.setCellValueFactory(new PropertyValueFactory("sobrenome"));
+        colunaTelPrincipal.setCellValueFactory(new PropertyValueFactory("telPrincipal"));
+        colunaEmail.setCellValueFactory(new PropertyValueFactory("email"));
+        colunaCpf.setCellValueFactory(new PropertyValueFactory("cpf"));
+        
+        //LinhaTabelaCliente linha = new LinhaTabelaCliente ("Luan","Matos","11964245587","lmatos@gmail.com","569.895.785-08");
+        //tableCliente.getItems().add(linha);
     }    
 
     @FXML

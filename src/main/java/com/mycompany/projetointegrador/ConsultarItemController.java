@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  * FXML Controller class
@@ -22,17 +23,17 @@ import javafx.scene.control.TextField;
 public class ConsultarItemController implements Initializable {
 
     @FXML
-    private TableView<?> tableProduto;
+    private TableView<LinhaTabelaProduto> tableProduto;
     @FXML
-    private TableColumn<?, ?> colunaTituto;
+    private TableColumn<LinhaTabelaProduto, String> colunaTituto;
     @FXML
-    private TableColumn<?, ?> colunaAutor;
+    private TableColumn<LinhaTabelaProduto, String> colunaAutor;
     @FXML
-    private TableColumn<?, ?> colunaAssunto;
+    private TableColumn<LinhaTabelaProduto, String> colunaAssunto;
     @FXML
-    private TableColumn<?, ?> colunaPreco;
+    private TableColumn<LinhaTabelaProduto, Double> colunaPreco;
     @FXML
-    private TableColumn<?, ?> colunaEstoque;
+    private TableColumn<LinhaTabelaProduto, Integer> colunaEstoque;
     @FXML
     private TextField txtPesquisa;
 
@@ -41,7 +42,14 @@ public class ConsultarItemController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        colunaTituto.setCellValueFactory(new PropertyValueFactory("titulo"));
+        colunaAutor.setCellValueFactory(new PropertyValueFactory("autor"));
+        colunaAssunto.setCellValueFactory(new PropertyValueFactory("assunto"));
+        colunaPreco.setCellValueFactory(new PropertyValueFactory("preco"));
+        colunaEstoque.setCellValueFactory(new PropertyValueFactory("estoque"));
+        
+        //LinhaTabelaProduto linha = new LinhaTabelaProduto ("1984","George Orwell","Suspense",49.50, 15);
+        //tableProduto.getItems().add(linha);
     }    
 
     @FXML
