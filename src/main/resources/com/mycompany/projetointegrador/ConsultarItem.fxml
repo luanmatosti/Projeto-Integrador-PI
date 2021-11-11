@@ -20,7 +20,7 @@
                           <columns>
                             <TableColumn fx:id="colunaTituto" prefWidth="75.0" text="Título do Livro" />
                             <TableColumn fx:id="colunaAutor" prefWidth="75.0" text="Autor" />
-                              <TableColumn fx:id="colunaAssunto" prefWidth="75.0" text="Assunto" />
+                              <TableColumn fx:id="colunaCategoria" prefWidth="75.0" text="Categoria" />
                               <TableColumn fx:id="colunaPreco" prefWidth="75.0" text="Preço" />
                               <TableColumn fx:id="colunaEstoque" prefWidth="75.0" text="Estoque" />
                           </columns>

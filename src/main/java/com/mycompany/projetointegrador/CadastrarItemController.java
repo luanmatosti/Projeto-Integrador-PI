@@ -34,9 +34,11 @@ public class CadastrarItemController implements Initializable {
     @FXML
     private TextField txtPagina;
     @FXML
-    private ComboBox<?> comboGeneroLiterario;
+    private ComboBox<?> comboCategoria;
     @FXML
     private TextField txtPreco;
+    @FXML
+    private TextField txtQtd;
 
     /**
      * Initializes the controller class.

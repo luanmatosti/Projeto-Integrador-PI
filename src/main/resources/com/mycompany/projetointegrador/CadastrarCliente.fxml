@@ -73,7 +73,7 @@
                   <HBox layoutX="204.0" layoutY="325.0" prefHeight="32.0" prefWidth="136.0" spacing="14.0" AnchorPane.rightAnchor="0.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#limpar" text="Limpar" HBox.hgrow="ALWAYS" />
-                        <Button mnemonicParsing="false" onAction="#cadastrar" text="Cadastrar" HBox.hgrow="ALWAYS" />
+                        <Button mnemonicParsing="false" onAction="#cadastrar" text="Salvar" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                </children>

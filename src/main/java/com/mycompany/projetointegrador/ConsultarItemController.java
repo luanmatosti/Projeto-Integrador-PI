@@ -31,7 +31,7 @@ public class ConsultarItemController implements Initializable {
     @FXML
     private TableColumn<LinhaTabelaProduto, String> colunaAutor;
     @FXML
-    private TableColumn<LinhaTabelaProduto, String> colunaAssunto;
+    private TableColumn<LinhaTabelaProduto, String> colunaCategoria;
     @FXML
     private TableColumn<LinhaTabelaProduto, Double> colunaPreco;
     @FXML
@@ -46,11 +46,11 @@ public class ConsultarItemController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         colunaTituto.setCellValueFactory(new PropertyValueFactory("titulo"));
         colunaAutor.setCellValueFactory(new PropertyValueFactory("autor"));
-        colunaAssunto.setCellValueFactory(new PropertyValueFactory("assunto"));
+        colunaCategoria.setCellValueFactory(new PropertyValueFactory("categoria"));
         colunaPreco.setCellValueFactory(new PropertyValueFactory("preco"));
         colunaEstoque.setCellValueFactory(new PropertyValueFactory("estoque"));
 
-        //LinhaTabelaProduto linha = new LinhaTabelaProduto ("1984","George Orwell","Suspense",49.50, 15);
+        //LinhaTabelaProduto linha = new LinhaTabelaProduto ("50 tons","George","Amor",158.80, 68);
         //tableProduto.getItems().add(linha);
     }
 
@@ -95,11 +95,11 @@ public class ConsultarItemController implements Initializable {
             while (rs.next()) {
                 String autor = rs.getString("autor");
                 String titulo = rs.getString("titulo");
-                String assunto = rs.getString("genero");
+                String categoria = rs.getString("categoria");
                 Double preco = rs.getDouble("preco");
                 Integer estoque = rs.getInt("estoque");
 
-                LinhaTabelaProduto linha = new LinhaTabelaProduto(titulo, autor, assunto, preco, estoque);
+                LinhaTabelaProduto linha = new LinhaTabelaProduto(titulo, autor, categoria, preco, estoque);
                 tableProduto.getItems().add(linha);
             }
         } catch (Exception e) {

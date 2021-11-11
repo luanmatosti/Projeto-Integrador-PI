@@ -4,14 +4,14 @@ public class LinhaTabelaProduto {
 
     private String titulo;
     private String autor;
-    private String assunto;
+    private String categoria;
     private double preco;
     private int estoque;
 
-    public LinhaTabelaProduto(String titulo, String autor, String assunto, double preco, int estoque) {
+    public LinhaTabelaProduto(String titulo, String autor, String categoria, double preco, int estoque) {
         this.titulo = titulo;
         this.autor = autor;
-        this.assunto = assunto;
+        this.categoria = categoria;
         this.preco = preco;
         this.estoque = estoque;
     }
@@ -32,12 +32,12 @@ public class LinhaTabelaProduto {
         this.autor = autor;
     }
 
-    public String getAssunto() {
-        return assunto;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setAssunto(String assunto) {
-        this.assunto = assunto;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     public double getPreco() {
