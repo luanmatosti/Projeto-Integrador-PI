@@ -52,15 +52,14 @@ public class CadastrarItemController implements Initializable {
 
     @FXML
     private void cadastrar(ActionEvent event) {
-        String sql = "INSERT INTO produto (nomeAutor, titulo, editora, dataPublicacao, nmrPagina, genero, preco) VALUES (?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO produto (autor, titulo, editora, dtPublicacao) VALUES (?,?,?,?)";
         
         try(PreparedStatement ps = db.connect().prepareStatement(sql)){
         ps.setString(1, txtAutor.getText());
         ps.setString(2, txtTitulo.getText());
         ps.setString(3, txtEditora.getText());
         ps.setDate(4, Date.valueOf(dtPublicacao.getValue()));
-        
-        
+
         ps.execute();
         }
         catch(Exception e){

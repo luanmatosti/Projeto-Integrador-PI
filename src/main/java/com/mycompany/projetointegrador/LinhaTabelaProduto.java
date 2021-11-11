@@ -6,7 +6,7 @@ public class LinhaTabelaProduto {
     private String autor;
     private String assunto;
     private double preco;
-    private int estoque;
+   private int estoque;
 
     public LinhaTabelaProduto(String titulo, String autor, String assunto, double preco, int estoque) {
         this.titulo = titulo;
@@ -55,5 +55,4 @@ public class LinhaTabelaProduto {
     public void setEstoque(int estoque) {
         this.estoque = estoque;
     }
-
 }

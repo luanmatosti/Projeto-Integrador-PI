@@ -6,6 +6,8 @@
 package com.mycompany.projetointegrador;
 
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -58,6 +60,7 @@ public class ConsultarItemController implements Initializable {
 
     @FXML
     private void pesquisar(ActionEvent event) {
+        atualizarTabela();
     }
 
     @FXML
@@ -66,6 +69,44 @@ public class ConsultarItemController implements Initializable {
 
     @FXML
     private void deletar(ActionEvent event) {
+        LinhaTabelaProduto linha = tableProduto.getSelectionModel().getSelectedItem();
+        
+        if(linha != null){
+        
+        String autor = linha.getAutor();
+        String sql = "DELETE FROM produto WHERE autor = ?";          
+        try(PreparedStatement ps = db.connect().prepareStatement(sql)){
+        ps.setString(1, autor);
+        
+        ps.execute();    
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
     }
     
+    private void atualizarTabela(){
+    tableProduto.getItems().clear();
+    
+    String sql = "SELECT * FROM produto";
+    try(PreparedStatement ps = db.connect().prepareStatement(sql)){
+        ResultSet rs = ps.executeQuery();
+        
+        while(rs.next()){
+        String autor = rs.getString("autor");
+        String titulo = rs.getString("titulo");
+        String assunto = rs.getString("genero");
+        Double preco = rs.getDouble("preco");
+        Integer estoque = rs.getInt("estoque");
+        
+        
+        LinhaTabelaProduto linha = new LinhaTabelaProduto(titulo, autor, assunto, preco, estoque); 
+        tableProduto.getItems().add(linha);
+        }
+    }
+    catch(Exception e){
+        e.printStackTrace();
+    }
+    }
 }

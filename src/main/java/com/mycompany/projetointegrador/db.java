@@ -11,7 +11,7 @@ public class db {
 
         //2. Conectar no Banco
         //jdbc:sqlserver://localhost:1433;databaseName=jdbc_test;user=utest;password=123456
-        Connection conexao = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=jdbc_test;user=teste;password=pepino");
+        Connection conexao = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=projetointegrador;user=livraria;password=123saber");
 
 
         //3. Retornar uma conexão para quem chamou
