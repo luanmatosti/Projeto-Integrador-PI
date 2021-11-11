@@ -52,7 +52,7 @@ public class VendaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void adicionar(ActionEvent event) {
@@ -69,5 +69,5 @@ public class VendaController implements Initializable {
     @FXML
     private void cancelar(ActionEvent event) {
     }
-    
+
 }

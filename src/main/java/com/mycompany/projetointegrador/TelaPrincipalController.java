@@ -29,7 +29,7 @@ public class TelaPrincipalController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void abrirCadastrarCliente(ActionEvent event) throws IOException {
@@ -60,5 +60,5 @@ public class TelaPrincipalController implements Initializable {
     private void abrirRelatorio(ActionEvent event) throws IOException {
         App.setRoot("Relatorio", container);
     }
-    
+
 }

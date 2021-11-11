@@ -62,7 +62,7 @@ public class CadastrarClienteController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void limpar(ActionEvent event) {
@@ -71,5 +71,5 @@ public class CadastrarClienteController implements Initializable {
     @FXML
     private void cadastrar(ActionEvent event) {
     }
-    
+
 }

@@ -46,10 +46,10 @@ public class RelatorioController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void pesquisar(ActionEvent event) {
     }
-    
+
 }
