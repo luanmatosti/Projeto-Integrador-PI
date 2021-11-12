@@ -2,18 +2,28 @@ package com.mycompany.projetointegrador;
 
 public class LinhaTabelaCliente {
 
+    private int id;
     private String nome;
     private String sobrenome;
     private String telPrincipal;
     private String email;
     private String cpf;
 
-    public LinhaTabelaCliente(String nome, String sobrenome, String telPrincipal, String email, String cpf) {
+    public LinhaTabelaCliente(int id,String nome, String sobrenome, String telPrincipal, String email, String cpf) {
+        this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.telPrincipal = telPrincipal;
         this.email = email;
         this.cpf = cpf;
+    }
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {

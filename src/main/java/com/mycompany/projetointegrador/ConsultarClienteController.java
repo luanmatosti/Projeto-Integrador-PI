@@ -36,19 +36,22 @@ public class ConsultarClienteController implements Initializable {
     private TableColumn<LinhaTabelaCliente, String> colunaCpf;
     @FXML
     private TextField txtCpf;
+    @FXML
+    private TableColumn<LinhaTabelaCliente, Integer> colunaId;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        colunaId.setCellValueFactory(new PropertyValueFactory("id"));
         colunaNome.setCellValueFactory(new PropertyValueFactory("nome"));
         colunaSobrenome.setCellValueFactory(new PropertyValueFactory("sobrenome"));
         colunaTelPrincipal.setCellValueFactory(new PropertyValueFactory("telPrincipal"));
         colunaEmail.setCellValueFactory(new PropertyValueFactory("email"));
         colunaCpf.setCellValueFactory(new PropertyValueFactory("cpf"));
 
-        //LinhaTabelaCliente linha = new LinhaTabelaCliente ("Luan","Matos","11964245587","lmatos@gmail.com","569.895.785-08");
+        //LinhaTabelaCliente linha = new LinhaTabelaCliente (25,"Luan","Matos","11964245587","lmatos@gmail.com","569.895.785-08");
         //tableCliente.getItems().add(linha);
     }
 

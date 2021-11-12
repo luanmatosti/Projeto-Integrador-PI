@@ -18,6 +18,7 @@
                      <children>
                         <TableView fx:id="tableProduto" prefHeight="304.0" prefWidth="694.0" HBox.hgrow="ALWAYS">
                           <columns>
+                              <TableColumn fx:id="colunaId" prefWidth="75.0" text="Id" />
                             <TableColumn fx:id="colunaTituto" prefWidth="75.0" text="Título do Livro" />
                             <TableColumn fx:id="colunaAutor" prefWidth="75.0" text="Autor" />
                               <TableColumn fx:id="colunaCategoria" prefWidth="75.0" text="Categoria" />

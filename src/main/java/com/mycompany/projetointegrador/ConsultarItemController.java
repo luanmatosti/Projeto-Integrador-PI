@@ -38,12 +38,15 @@ public class ConsultarItemController implements Initializable {
     private TableColumn<LinhaTabelaProduto, Integer> colunaEstoque;
     @FXML
     private TextField txtPesquisa;
+    @FXML
+    private TableColumn<LinhaTabelaProduto, Integer> colunaId;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        colunaId.setCellValueFactory(new PropertyValueFactory("id"));
         colunaTituto.setCellValueFactory(new PropertyValueFactory("titulo"));
         colunaAutor.setCellValueFactory(new PropertyValueFactory("autor"));
         colunaCategoria.setCellValueFactory(new PropertyValueFactory("categoria"));
@@ -73,10 +76,10 @@ public class ConsultarItemController implements Initializable {
 
         if (linha != null) {
 
-            String autor = linha.getAutor();
-            String sql = "DELETE FROM produto WHERE autor = ?";
+            int id = linha.getId();
+            String sql = "DELETE FROM produto WHERE id = ?";
             try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
-                ps.setString(1, autor);
+                ps.setInt(1, id);
 
                 ps.execute();
             } catch (Exception e) {
@@ -93,13 +96,14 @@ public class ConsultarItemController implements Initializable {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
+                Integer id = rs.getInt("id");
                 String autor = rs.getString("autor");
                 String titulo = rs.getString("titulo");
                 String categoria = rs.getString("categoria");
                 Double preco = rs.getDouble("preco");
                 Integer estoque = rs.getInt("estoque");
 
-                LinhaTabelaProduto linha = new LinhaTabelaProduto(titulo, autor, categoria, preco, estoque);
+                LinhaTabelaProduto linha = new LinhaTabelaProduto(id,titulo, autor, categoria, preco, estoque);
                 tableProduto.getItems().add(linha);
             }
         } catch (Exception e) {

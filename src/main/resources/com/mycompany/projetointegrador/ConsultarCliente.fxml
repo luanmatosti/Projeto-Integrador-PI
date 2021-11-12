@@ -20,6 +20,7 @@
                      <children>
                         <TableView fx:id="tableCliente" prefHeight="297.0" prefWidth="695.0" HBox.hgrow="ALWAYS">
                            <columns>
+                              <TableColumn fx:id="colunaId" prefWidth="46.0" text="Id" />
                               <TableColumn fx:id="colunaNome" prefWidth="46.0" text="Nome" />
                               <TableColumn fx:id="colunaSobrenome" prefWidth="77.0" text="Sobrenome" />
                               <TableColumn fx:id="colunaTelPrincipal" prefWidth="56.0" text="Tel Principal" />

@@ -2,13 +2,15 @@ package com.mycompany.projetointegrador;
 
 public class LinhaTabelaProduto {
 
+    private int id;
     private String titulo;
     private String autor;
     private String categoria;
     private double preco;
     private int estoque;
 
-    public LinhaTabelaProduto(String titulo, String autor, String categoria, double preco, int estoque) {
+    public LinhaTabelaProduto(int id,String titulo, String autor, String categoria, double preco, int estoque) {
+        this.id = id;
         this.titulo = titulo;
         this.autor = autor;
         this.categoria = categoria;
@@ -16,6 +18,14 @@ public class LinhaTabelaProduto {
         this.estoque = estoque;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getTitulo() {
         return titulo;
     }
