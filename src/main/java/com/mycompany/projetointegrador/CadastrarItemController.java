@@ -61,7 +61,7 @@ public class CadastrarItemController implements Initializable {
             ps.setString(2, txtTitulo.getText());
             ps.setString(3, txtEditora.getText());
             ps.setDate(4, Date.valueOf(dtPublicacao.getValue()));
-
+            
             ps.execute();
         } catch (Exception e) {
             e.printStackTrace();
