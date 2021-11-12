@@ -51,7 +51,7 @@ public class ConsultarItemController implements Initializable {
         colunaAutor.setCellValueFactory(new PropertyValueFactory("autor"));
         colunaCategoria.setCellValueFactory(new PropertyValueFactory("categoria"));
         colunaPreco.setCellValueFactory(new PropertyValueFactory("preco"));
-        colunaEstoque.setCellValueFactory(new PropertyValueFactory("estoque"));
+        colunaEstoque.setCellValueFactory(new PropertyValueFactory("quantidade"));
 
         //LinhaTabelaProduto linha = new LinhaTabelaProduto ("50 tons","George","Amor",158.80, 68);
         //tableProduto.getItems().add(linha);
@@ -101,9 +101,9 @@ public class ConsultarItemController implements Initializable {
                 String titulo = rs.getString("titulo");
                 String categoria = rs.getString("categoria");
                 Double preco = rs.getDouble("preco");
-                Integer estoque = rs.getInt("estoque");
+                Integer qtd = rs.getInt("qtd");
 
-                LinhaTabelaProduto linha = new LinhaTabelaProduto(id,titulo, autor, categoria, preco, estoque);
+                LinhaTabelaProduto linha = new LinhaTabelaProduto(id,titulo, autor, categoria, preco, qtd);
                 tableProduto.getItems().add(linha);
             }
         } catch (Exception e) {
