@@ -45,7 +45,6 @@ public class CadastrarItemController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
         comboCategoria.getItems().add("Suspense");
         comboCategoria.getItems().add("Romance");
     }
