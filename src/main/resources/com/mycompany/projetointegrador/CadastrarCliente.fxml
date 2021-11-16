@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -54,20 +53,10 @@
                         <TextField fx:id="txtSobrenome" prefHeight="25.0" prefWidth="388.0" promptText="Sobrenome" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
-                  <HBox layoutX="19.6" layoutY="95.0" prefHeight="27.0" prefWidth="206.0" spacing="14.0" AnchorPane.leftAnchor="0.0">
+                  <HBox layoutX="10.0" layoutY="95.0" prefHeight="27.0" prefWidth="228.0" spacing="14.0" AnchorPane.leftAnchor="0.0">
                      <children>
-                        <MenuButton fx:id="comboGenero" mnemonicParsing="false" text="Gênero:" HBox.hgrow="ALWAYS">
-                           <items>
-                              <MenuItem mnemonicParsing="false" text="Action 1" />
-                              <MenuItem mnemonicParsing="false" text="Action 2" />
-                           </items>
-                        </MenuButton>
-                        <MenuButton fx:id="comboEstadoCivil" mnemonicParsing="false" text="Estado Civil:" HBox.hgrow="ALWAYS">
-                           <items>
-                              <MenuItem mnemonicParsing="false" text="Action 1" />
-                              <MenuItem mnemonicParsing="false" text="Action 2" />
-                           </items>
-                        </MenuButton>
+                        <ComboBox fx:id="comboGenero" prefHeight="25.0" prefWidth="88.0" promptText="Gênero" HBox.hgrow="ALWAYS" />
+                        <ComboBox fx:id="comboEstadoCivil" prefHeight="25.0" prefWidth="115.0" promptText="Estado Civil" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                   <HBox layoutX="204.0" layoutY="325.0" prefHeight="32.0" prefWidth="136.0" spacing="14.0" AnchorPane.rightAnchor="0.0">

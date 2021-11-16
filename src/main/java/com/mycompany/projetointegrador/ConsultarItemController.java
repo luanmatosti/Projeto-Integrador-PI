@@ -65,7 +65,7 @@ public class ConsultarItemController implements Initializable {
     private void pesquisar(ActionEvent event) {
         atualizarTabela();
     }
-
+    
     @FXML
     private void alterar(ActionEvent event) {
     }

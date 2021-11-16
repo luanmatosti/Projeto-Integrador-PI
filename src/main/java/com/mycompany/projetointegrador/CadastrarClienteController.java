@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
@@ -52,9 +53,9 @@ public class CadastrarClienteController implements Initializable {
     @FXML
     private TextField txtSobrenome;
     @FXML
-    private MenuButton comboGenero;
+    private ComboBox comboGenero;
     @FXML
-    private MenuButton comboEstadoCivil;
+    private ComboBox comboEstadoCivil;
 
     /**
      * Initializes the controller class.
