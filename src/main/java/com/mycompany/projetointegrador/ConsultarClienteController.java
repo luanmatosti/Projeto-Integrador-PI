@@ -63,6 +63,20 @@ public class ConsultarClienteController implements Initializable {
 
     @FXML
     private void apagar(ActionEvent event) {
+        LinhaTabelaCliente linha = tableCliente.getSelectionModel().getSelectedItem();
+
+        if (linha != null) {
+
+            int id = linha.getId();
+            String sql = "DELETE FROM cliente WHERE id = ?";
+            try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
+                ps.setInt(1, id);
+
+                ps.execute();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @FXML
@@ -89,7 +103,7 @@ public class ConsultarClienteController implements Initializable {
                 Integer id = rs.getInt("id");
                 String nome = rs.getString("nome");
                 String sobrenome = rs.getString("sobrenome");
-                String telPrincipal = rs.getString("telPricipal");
+                String telPrincipal = rs.getString("telPrincipal");
                 String email = rs.getString("email");
                 String cpf = rs.getString("cpf");
 

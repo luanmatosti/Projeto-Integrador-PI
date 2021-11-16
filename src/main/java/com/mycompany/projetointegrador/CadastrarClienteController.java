@@ -96,7 +96,7 @@ comboEstadoCivil.getSelectionModel().clearSelection();
 
     @FXML
     private void cadastrar(ActionEvent event) {
-     String sql = "INSERT INTO cliente (nome,sobrenome,dtNascimento,rg,cpf,genero,estadoCivil,cep,logradouro,numero,complemento,bairro,cidade,estado,telPricipal,telSecundario,email) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+     String sql = "INSERT INTO cliente (nome,sobrenome,dtNascimento,rg,cpf,genero,estadoCivil,cep,logradouro,numero,complemento,bairro,cidade,estado,telPrincipal,telSecundario,email) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
             //nome
