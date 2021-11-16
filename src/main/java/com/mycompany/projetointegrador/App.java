@@ -27,6 +27,8 @@ public class App extends Application {
         stage.getIcons().add(new Image("/com/mycompany/projetointegrador/imagens/iconelivropagina.png"));
         stage.show();
     }
+    
+    //teste
 
     static void setRoot(String fxml, BorderPane container) throws IOException {
         container.setCenter(loadFXML(fxml));
