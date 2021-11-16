@@ -6,6 +6,8 @@
 package com.mycompany.projetointegrador;
 
 import java.net.URL;
+import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -97,14 +99,40 @@ comboEstadoCivil.getSelectionModel().clearSelection();
      String sql = "INSERT INTO cliente (nome,sobrenome,dtNascimento,rg,cpf,genero,estadoCivil,cep,logradouro,numero,complemento,bairro,cidade,estado,telPricipal,telSecundario,email) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
-            ps.setString(1, txtAutor.getText());
-            ps.setString(2, txtTitulo.getText());
-            ps.setString(3, txtEditora.getText());
-            ps.setDate(4, Date.valueOf(dtPublicacao.getValue()));
-            ps.setInt(5, Integer.parseInt(txtPagina.getText()));
-            ps.setString(6, comboCategoria.getSelectionModel().getSelectedItem().toString());
-            ps.setDouble(7, Double.parseDouble(txtPreco.getText()));
-            ps.setInt(8, Integer.parseInt(txtQtd.getText()));
+            //nome
+            ps.setString(1, txtNome.getText());
+            //sobrenome
+            ps.setString(2, txtSobrenome.getText());
+            //dtNascimento
+            ps.setDate(3, Date.valueOf(dtNascimento.getValue()));           
+            //rg
+            ps.setString(4, txtRg.getText());
+            //cpf
+            ps.setString(5, txtCpf.getText());
+            //genero
+            ps.setString(6, comboGenero.getSelectionModel().getSelectedItem().toString());
+            //estadoCivil
+            ps.setString(7, comboEstadoCivil.getSelectionModel().getSelectedItem().toString());
+            //cep
+            ps.setString(8, txtCep.getText());
+            //logradouro
+            ps.setString(9, txtLogradouro.getText());
+            //numero,
+            ps.setString(10, txtNumero.getText());
+            //complemento
+            ps.setString(11, txtComplemento.getText());
+            //bairro
+            ps.setString(12, txtBairro.getText());
+            //cidade
+            ps.setString(13, txtCidade.getText());
+            //estado
+            ps.setString(14, txtEstado.getText());
+            //telPricipal
+            ps.setString(15, txtTelPrincipal.getText());
+            //telSecundario
+            ps.setString(16, txtTelSecundario.getText());
+            //email
+            ps.setString(17, txtEmail.getText());
 
             ps.execute();
         } catch (Exception e) {
