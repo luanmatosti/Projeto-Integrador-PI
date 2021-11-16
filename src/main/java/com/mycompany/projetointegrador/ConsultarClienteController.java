@@ -65,6 +65,10 @@ public class ConsultarClienteController implements Initializable {
 
     @FXML
     private void limpar(ActionEvent event) {
+     txtCpf.clear();
+     tableCliente.getItems().clear();
+     
+        
     }
 
     @FXML

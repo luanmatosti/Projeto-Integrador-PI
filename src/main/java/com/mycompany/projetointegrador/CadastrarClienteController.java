@@ -62,11 +62,34 @@ public class CadastrarClienteController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+      comboGenero.getItems().add("Masculino");
+      comboGenero.getItems().add("Feminino");
+      comboEstadoCivil.getItems().add("Solteiro(a)");
+      comboEstadoCivil.getItems().add("Casado(a)");
+      comboEstadoCivil.getItems().add("Divorciado(a)");
+      comboEstadoCivil.getItems().add("Viuvo(a)");
+      comboEstadoCivil.getItems().add("União Estável");
     }
 
     @FXML
     private void limpar(ActionEvent event) {
+        txtCep.clear();
+txtLogradouro.clear();
+txtNumero.clear();
+txtComplemento.clear();
+txtBairro.clear();
+txtCidade.clear();
+txtEstado.clear();
+dtNascimento.setValue(null);
+txtRg.clear();
+txtCpf.clear();
+txtTelPrincipal.clear();
+txtTelSecundario.clear();
+txtEmail.clear();
+txtNome.clear();
+txtSobrenome.clear();
+comboGenero.getSelectionModel().clearSelection();
+comboEstadoCivil.getSelectionModel().clearSelection();
     }
 
     @FXML
