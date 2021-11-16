@@ -6,6 +6,8 @@
 package com.mycompany.projetointegrador;
 
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -73,6 +75,29 @@ public class ConsultarClienteController implements Initializable {
 
     @FXML
     private void consultar(ActionEvent event) {
+        atualizarTabela();
     }
 
+    private void atualizarTabela() {
+        tableCliente.getItems().clear();
+
+        String sql = "SELECT * FROM cliente";
+        try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Integer id = rs.getInt("id");
+                String nome = rs.getString("nome");
+                String sobrenome = rs.getString("sobrenome");
+                String telPrincipal = rs.getString("telPricipal");
+                String email = rs.getString("email");
+                String cpf = rs.getString("cpf");
+
+                LinhaTabelaCliente linha = new LinhaTabelaCliente(id,nome, sobrenome, telPrincipal, email, cpf);
+                tableCliente.getItems().add(linha);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
