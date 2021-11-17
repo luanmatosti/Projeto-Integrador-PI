@@ -88,8 +88,13 @@ public class ConsultarClienteController implements Initializable {
 
     @FXML
     private void consultar(ActionEvent event) {
-        atualizarTabela();
+         if (txtCpf.getText().isBlank()) {
+            atualizarTabela();
+        } else {
+            pesquisarCpf();
+        }      
     }
+    
 
     private void atualizarTabela() {
         tableCliente.getItems().clear();
@@ -113,4 +118,23 @@ public class ConsultarClienteController implements Initializable {
             e.printStackTrace();
         }
     }
+     private void pesquisarCpf() {
+        tableCliente.getItems().clear();
+        String sql = "SELECT * FROM cliente WHERE cpf like ?";
+
+        try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
+            ps.setString(1, "%" + txtCpf.getText() + "%");
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                LinhaTabelaCliente linha = new LinhaTabelaCliente(rs.getInt("id"), rs.getString("nome"), rs.getString("sobrenome"), rs.getString("telPrincipal"),
+                        rs.getString("email"), rs.getString("cpf"));
+                tableCliente.getItems().add(linha);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+     }
 }

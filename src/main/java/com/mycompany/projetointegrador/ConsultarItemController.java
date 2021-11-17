@@ -68,7 +68,7 @@ public class ConsultarItemController implements Initializable {
         if (txtPesquisa.getText().isBlank()) {
             atualizarTabela();
         } else {
-            pesquisarCpf();
+            pesquisarTitulo();
         }
     }
 
@@ -117,7 +117,7 @@ public class ConsultarItemController implements Initializable {
         }
     }
 
-    private void pesquisarCpf() {
+    private void pesquisarTitulo() {
         tableProduto.getItems().clear();
         String sql = "SELECT * FROM produto WHERE titulo like ?";
 
