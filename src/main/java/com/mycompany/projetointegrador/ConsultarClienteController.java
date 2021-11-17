@@ -81,10 +81,9 @@ public class ConsultarClienteController implements Initializable {
 
     @FXML
     private void limpar(ActionEvent event) {
-     txtCpf.clear();
-     tableCliente.getItems().clear();
-     
-        
+        txtCpf.clear();
+        tableCliente.getItems().clear();
+
     }
 
     @FXML
@@ -107,7 +106,7 @@ public class ConsultarClienteController implements Initializable {
                 String email = rs.getString("email");
                 String cpf = rs.getString("cpf");
 
-                LinhaTabelaCliente linha = new LinhaTabelaCliente(id,nome, sobrenome, telPrincipal, email, cpf);
+                LinhaTabelaCliente linha = new LinhaTabelaCliente(id, nome, sobrenome, telPrincipal, email, cpf);
                 tableCliente.getItems().add(linha);
             }
         } catch (Exception e) {

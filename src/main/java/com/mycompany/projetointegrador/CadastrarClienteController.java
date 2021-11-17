@@ -64,39 +64,39 @@ public class CadastrarClienteController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-      comboGenero.getItems().add("Masculino");
-      comboGenero.getItems().add("Feminino");
-      comboEstadoCivil.getItems().add("Solteiro(a)");
-      comboEstadoCivil.getItems().add("Casado(a)");
-      comboEstadoCivil.getItems().add("Divorciado(a)");
-      comboEstadoCivil.getItems().add("Viuvo(a)");
-      comboEstadoCivil.getItems().add("União Estável");
+        comboGenero.getItems().add("Masculino");
+        comboGenero.getItems().add("Feminino");
+        comboEstadoCivil.getItems().add("Solteiro(a)");
+        comboEstadoCivil.getItems().add("Casado(a)");
+        comboEstadoCivil.getItems().add("Divorciado(a)");
+        comboEstadoCivil.getItems().add("Viuvo(a)");
+        comboEstadoCivil.getItems().add("União Estável");
     }
 
     @FXML
     private void limpar(ActionEvent event) {
         txtCep.clear();
-txtLogradouro.clear();
-txtNumero.clear();
-txtComplemento.clear();
-txtBairro.clear();
-txtCidade.clear();
-txtEstado.clear();
-dtNascimento.setValue(null);
-txtRg.clear();
-txtCpf.clear();
-txtTelPrincipal.clear();
-txtTelSecundario.clear();
-txtEmail.clear();
-txtNome.clear();
-txtSobrenome.clear();
-comboGenero.getSelectionModel().clearSelection();
-comboEstadoCivil.getSelectionModel().clearSelection();
+        txtLogradouro.clear();
+        txtNumero.clear();
+        txtComplemento.clear();
+        txtBairro.clear();
+        txtCidade.clear();
+        txtEstado.clear();
+        dtNascimento.setValue(null);
+        txtRg.clear();
+        txtCpf.clear();
+        txtTelPrincipal.clear();
+        txtTelSecundario.clear();
+        txtEmail.clear();
+        txtNome.clear();
+        txtSobrenome.clear();
+        comboGenero.getSelectionModel().clearSelection();
+        comboEstadoCivil.getSelectionModel().clearSelection();
     }
 
     @FXML
     private void cadastrar(ActionEvent event) {
-     String sql = "INSERT INTO cliente (nome,sobrenome,dtNascimento,rg,cpf,genero,estadoCivil,cep,logradouro,numero,complemento,bairro,cidade,estado,telPrincipal,telSecundario,email) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO cliente (nome,sobrenome,dtNascimento,rg,cpf,genero,estadoCivil,cep,logradouro,numero,complemento,bairro,cidade,estado,telPrincipal,telSecundario,email) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
             //nome
@@ -104,7 +104,7 @@ comboEstadoCivil.getSelectionModel().clearSelection();
             //sobrenome
             ps.setString(2, txtSobrenome.getText());
             //dtNascimento
-            ps.setDate(3, Date.valueOf(dtNascimento.getValue()));           
+            ps.setDate(3, Date.valueOf(dtNascimento.getValue()));
             //rg
             ps.setString(4, txtRg.getText());
             //cpf
@@ -137,7 +137,7 @@ comboEstadoCivil.getSelectionModel().clearSelection();
             ps.execute();
         } catch (Exception e) {
             e.printStackTrace();
-   
-    }
+
+        }
     }
 }

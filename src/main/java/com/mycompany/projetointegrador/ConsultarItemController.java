@@ -59,6 +59,8 @@ public class ConsultarItemController implements Initializable {
 
     @FXML
     private void limpar(ActionEvent event) {
+        txtPesquisa.clear();
+        tableProduto.getItems().clear();
     }
 
     @FXML
