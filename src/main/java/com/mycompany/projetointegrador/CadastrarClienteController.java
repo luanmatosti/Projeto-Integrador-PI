@@ -135,9 +135,30 @@ public class CadastrarClienteController implements Initializable {
             ps.setString(17, txtEmail.getText());
 
             ps.execute();
+
+            limparTela();
         } catch (Exception e) {
             e.printStackTrace();
-
         }
+    }
+
+    private void limparTela() {
+        txtCep.clear();
+        txtLogradouro.clear();
+        txtNumero.clear();
+        txtComplemento.clear();
+        txtBairro.clear();
+        txtCidade.clear();
+        txtEstado.clear();
+        dtNascimento.setValue(null);
+        txtRg.clear();
+        txtCpf.clear();
+        txtTelPrincipal.clear();
+        txtTelSecundario.clear();
+        txtEmail.clear();
+        txtNome.clear();
+        txtSobrenome.clear();
+        comboGenero.getSelectionModel().clearSelection();
+        comboEstadoCivil.getSelectionModel().clearSelection();
     }
 }

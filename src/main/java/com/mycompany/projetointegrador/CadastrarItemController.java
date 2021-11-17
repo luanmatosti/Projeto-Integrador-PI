@@ -76,9 +76,21 @@ public class CadastrarItemController implements Initializable {
             ps.setInt(8, Integer.parseInt(txtQtd.getText()));
 
             ps.execute();
+            limparTela();
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
+
+    private void limparTela() {
+        txtAutor.clear();
+        txtTitulo.clear();
+        txtEditora.clear();
+        dtPublicacao.setValue(null);
+        txtPagina.clear();
+        comboCategoria.getSelectionModel().clearSelection();
+        txtPreco.clear();
+        txtQtd.clear();
+    }
 }

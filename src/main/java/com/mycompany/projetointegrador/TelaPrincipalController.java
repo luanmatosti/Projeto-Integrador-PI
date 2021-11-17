@@ -61,4 +61,14 @@ public class TelaPrincipalController implements Initializable {
         App.setRoot("Relatorio", container);
     }
 
+    @FXML
+    private void abrirEditarCliente(ActionEvent event) {
+        
+    }
+
+    @FXML
+    private void abrirEditarItens(ActionEvent event) throws IOException {
+        App.setRoot("CadastrarItemEdicao", container);
+    }
+
 }

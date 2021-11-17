@@ -40,6 +40,9 @@ public class CadastrarItemEdicaoController implements Initializable {
     @FXML
     private TextField txtQtd;
 
+    public static Integer idEdicao = null;
+    private boolean estaEditando = false;
+
     /**
      * Initializes the controller class.
      */
@@ -63,22 +66,58 @@ public class CadastrarItemEdicaoController implements Initializable {
 
     @FXML
     private void cadastrar(ActionEvent event) {
-        String sql = "INSERT INTO produto (autor, titulo, editora, dtPublicacao, nmrPagina, categoria, preco, qtd) VALUES (?,?,?,?,?,?,?,?)";
+        if (!estaEditando) {
+            String sql = "INSERT INTO produto (autor, titulo, editora, dtPublicacao, nmrPagina, categoria, preco, qtd) VALUES (?,?,?,?,?,?,?,?)";
 
-        try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
-            ps.setString(1, txtAutor.getText());
-            ps.setString(2, txtTitulo.getText());
-            ps.setString(3, txtEditora.getText());
-            ps.setDate(4, Date.valueOf(dtPublicacao.getValue()));
-            ps.setInt(5, Integer.parseInt(txtPagina.getText()));
-            ps.setString(6, comboCategoria.getSelectionModel().getSelectedItem().toString());
-            ps.setDouble(7, Double.parseDouble(txtPreco.getText()));
-            ps.setInt(8, Integer.parseInt(txtQtd.getText()));
+            try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
+                ps.setString(1, txtAutor.getText());
+                ps.setString(2, txtTitulo.getText());
+                ps.setString(3, txtEditora.getText());
+                ps.setDate(4, Date.valueOf(dtPublicacao.getValue()));
+                ps.setInt(5, Integer.parseInt(txtPagina.getText()));
+                ps.setString(6, comboCategoria.getSelectionModel().getSelectedItem().toString());
+                ps.setDouble(7, Double.parseDouble(txtPreco.getText()));
+                ps.setInt(8, Integer.parseInt(txtQtd.getText()));
+                ps.setInt(9, idEdicao);
 
-            ps.execute();
-        } catch (Exception e) {
-            e.printStackTrace();
+                ps.execute();
+                limparTela();     
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            String sql = "UPDATE produto SET autor = ?, titulo = ?, editora = ?, dtPublicacao = ?, nmrPagina = ?, categoria = ?, preco = ?, qtd = ? WHERE id = ?";
+
+            try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
+                ps.setString(1, txtAutor.getText());
+                ps.setString(2, txtTitulo.getText());
+                ps.setString(3, txtEditora.getText());
+                ps.setDate(4, Date.valueOf(dtPublicacao.getValue()));
+                ps.setInt(5, Integer.parseInt(txtPagina.getText()));
+                ps.setString(6, comboCategoria.getSelectionModel().getSelectedItem().toString());
+                ps.setDouble(7, Double.parseDouble(txtPreco.getText()));
+                ps.setInt(8, Integer.parseInt(txtQtd.getText()));
+
+                ps.execute();
+                limparTela();
+                
+                estaEditando = false;
+                idEdicao = null;
+   
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
-    
+
+    private void limparTela() {
+        txtAutor.clear();
+        txtTitulo.clear();
+        txtEditora.clear();
+        dtPublicacao.setValue(null);
+        txtPagina.clear();
+        comboCategoria.getSelectionModel().clearSelection();
+        txtPreco.clear();
+        txtQtd.clear();
+    }
 }
