@@ -51,6 +51,14 @@ public class CadastrarItemController implements Initializable {
 
     @FXML
     private void limpar(ActionEvent event) {
+        txtAutor.clear();
+        txtTitulo.clear();
+        txtEditora.clear();
+        dtPublicacao.setValue(null);
+        txtPagina.clear();
+        comboCategoria.getSelectionModel().clearSelection();
+        txtPreco.clear();
+        txtQtd.clear();
     }
 
     @FXML

@@ -65,9 +65,13 @@ public class ConsultarItemController implements Initializable {
 
     @FXML
     private void pesquisar(ActionEvent event) {
-        atualizarTabela();
+        if (txtPesquisa.getText().isBlank()) {
+            atualizarTabela();
+        } else {
+            pesquisarCpf();
+        }
     }
-    
+
     @FXML
     private void alterar(ActionEvent event) {
     }
@@ -105,9 +109,29 @@ public class ConsultarItemController implements Initializable {
                 Double preco = rs.getDouble("preco");
                 Integer qtd = rs.getInt("qtd");
 
-                LinhaTabelaProduto linha = new LinhaTabelaProduto(id,titulo, autor, categoria, preco, qtd);
+                LinhaTabelaProduto linha = new LinhaTabelaProduto(id, titulo, autor, categoria, preco, qtd);
                 tableProduto.getItems().add(linha);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void pesquisarCpf() {
+        tableProduto.getItems().clear();
+        String sql = "SELECT * FROM produto WHERE titulo like ?";
+
+        try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
+            ps.setString(1, "%" + txtPesquisa.getText() + "%");
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                LinhaTabelaProduto linha = new LinhaTabelaProduto(rs.getInt("id"), rs.getString("titulo"), rs.getString("autor"), rs.getString("categoria"),
+                        rs.getDouble("preco"), rs.getInt("qtd"));
+                tableProduto.getItems().add(linha);
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
