@@ -10,14 +10,11 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
 
 /**
@@ -77,29 +74,41 @@ public class CadastrarClienteEdicaoController implements Initializable {
         comboEstadoCivil.getItems().add("Divorciado(a)");
         comboEstadoCivil.getItems().add("Viuvo(a)");
         comboEstadoCivil.getItems().add("União Estável");
-        /*if (idEdicao != null) {
+        
+        if (idEdicao != null) {
             String sql = "SELECT * FROM cliente WHERE id = ?";
             try (PreparedStatement ps = db.connect().prepareStatement(sql)) {
                 ps.setInt(1, idEdicao);
-
                 ResultSet rs = ps.executeQuery();
 
                 if (rs.next()) {
+                    txtCep.setText(rs.getString("cep"));
+                    txtLogradouro.setText(rs.getString("logradouro"));
+                    txtNumero.setText(rs.getString("numero"));
+                    txtComplemento.setText(rs.getString("complemento"));
+                    txtBairro.setText(rs.getString("bairro"));
+                    txtCidade.setText(rs.getString("cidade"));
+                    txtEstado.setText(rs.getString("estado"));
+                    dtNascimento.setValue(rs.getDate("dtNascimento").toLocalDate());
+                    txtRg.setText(rs.getString("rg"));
+                    txtCpf.setText(rs.getString("cpf"));
+                    txtTelPrincipal.setText(rs.getString("telPricipal"));
+                    txtTelSecundario.setText(rs.getString("telSecundario"));
+                    txtEmail.setText(rs.getString("email"));
+                    txtNome.setText(rs.getString("nome"));
+                    txtSobrenome.setText(rs.getString("sobrenome"));
+                    comboGenero.setValue(rs.getString("genero"));
+                    comboEstadoCivil.setValue(rs.getString("estado civil"));
 
-                    Integer id = rs.getInt("id");
-                    String nome = rs.getString("nome");
-                    String sobrenome = rs.getString("sobrenome");
-                    String telPrincipal = rs.getString("telPrincipal");
-                    String email = rs.getString("email");
-                    String cpf = rs.getString("cpf");
-
-                    LinhaTabelaCliente linha = new LinhaTabelaCliente(id, nome, sobrenome, telPrincipal, email, cpf);
-                    tableCliente.getItems().add(linha);
+                    //LinhaTabelaCliente linha = new LinhaTabelaCliente(id, nome, sobrenome, telPrincipal, email, cpf);
+                    //tableCliente.getItems().add(linha);
+          
+                    estaEditando = true;
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }*/
+        }
     }
 
     @FXML
@@ -125,6 +134,7 @@ public class CadastrarClienteEdicaoController implements Initializable {
 
     @FXML
     private void cadastrar(ActionEvent event) {
+        if (!estaEditando) {
         String sql = "INSERT INTO cliente (nome,sobrenome,dtNascimento,rg,cpf,genero,estadoCivil,cep,logradouro,numero,complemento,bairro,cidade,estado,telPrincipal,telSecundario,email) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try (PreparedStatement ps = db.connect().prepareStatement(sql)) {
@@ -166,11 +176,14 @@ public class CadastrarClienteEdicaoController implements Initializable {
             ps.execute();
             // TALVEZ TENHA QUE TIRAR ESSE LIMPAR TELA
             limparTela();
+            
+            estaEditando = false;
+            idEdicao = null;
         } catch (Exception e) {
             e.printStackTrace();
         }
+     }
     }
-
     private void limparTela() {
         txtCep.clear();
         txtLogradouro.clear();
