@@ -5,6 +5,7 @@
  */
 package com.mycompany.projetointegrador;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -58,9 +59,12 @@ public class ConsultarClienteController implements Initializable {
     }
 
     @FXML
-    private void editar(ActionEvent event) {
+    private void editar(ActionEvent event) throws IOException {
         LinhaTabelaCliente linha = tableCliente.getSelectionModel().getSelectedItem();
-        
+        if (linha != null) {
+            int id = linha.getId();
+            App.abrirTelaEdicaoCliente(id);
+        }
     }
 
     @FXML
@@ -90,13 +94,12 @@ public class ConsultarClienteController implements Initializable {
 
     @FXML
     private void consultar(ActionEvent event) {
-         if (txtCpf.getText().isBlank()) {
+        if (txtCpf.getText().isBlank()) {
             atualizarTabela();
         } else {
             pesquisarCpf();
-        }      
+        }
     }
-    
 
     private void atualizarTabela() {
         tableCliente.getItems().clear();
@@ -120,7 +123,8 @@ public class ConsultarClienteController implements Initializable {
             e.printStackTrace();
         }
     }
-     private void pesquisarCpf() {
+
+    private void pesquisarCpf() {
         tableCliente.getItems().clear();
         String sql = "SELECT * FROM cliente WHERE cpf like ?";
 
@@ -138,5 +142,5 @@ public class ConsultarClienteController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-     }
+    }
 }

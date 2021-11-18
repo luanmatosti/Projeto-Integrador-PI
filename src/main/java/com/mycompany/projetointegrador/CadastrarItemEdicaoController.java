@@ -65,7 +65,7 @@ public class CadastrarItemEdicaoController implements Initializable {
                     txtEditora.setText(rs.getString("editora"));
                     dtPublicacao.setValue(rs.getDate("dtPublicacao").toLocalDate());
                     txtPagina.setText(String.valueOf(rs.getInt("nmrPagina")));
-                    //comboCategoria.setSelectionModel(rs.getString("categoria"));
+                    comboCategoria.setValue(rs.getString("categoria"));
                     txtPreco.setText(String.valueOf(rs.getDouble("preco")));
                     txtQtd.setText(String.valueOf(rs.getInt("qtd")));
                     
