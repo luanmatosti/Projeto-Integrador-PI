@@ -45,8 +45,18 @@ public class CadastrarItemController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        comboCategoria.getItems().add("Suspense");
         comboCategoria.getItems().add("Romance");
+        comboCategoria.getItems().add("Drama");
+        comboCategoria.getItems().add("Novela");
+        comboCategoria.getItems().add("Conto");
+        comboCategoria.getItems().add("Crônica");
+        comboCategoria.getItems().add("Poesia");
+        comboCategoria.getItems().add("Biografia");
+        comboCategoria.getItems().add("Ficção");
+        comboCategoria.getItems().add("Aventura");
+        comboCategoria.getItems().add("História em Quadrinhos");
+        comboCategoria.getItems().add("Literatura");
+        comboCategoria.getItems().add("Terror");
     }
 
     @FXML
