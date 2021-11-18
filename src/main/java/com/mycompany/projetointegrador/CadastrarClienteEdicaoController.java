@@ -92,13 +92,13 @@ public class CadastrarClienteEdicaoController implements Initializable {
                     dtNascimento.setValue(rs.getDate("dtNascimento").toLocalDate());
                     txtRg.setText(rs.getString("rg"));
                     txtCpf.setText(rs.getString("cpf"));
-                    txtTelPrincipal.setText(rs.getString("telPricipal"));
+                    txtTelPrincipal.setText(rs.getString("telPrincipal"));
                     txtTelSecundario.setText(rs.getString("telSecundario"));
                     txtEmail.setText(rs.getString("email"));
                     txtNome.setText(rs.getString("nome"));
                     txtSobrenome.setText(rs.getString("sobrenome"));
                     comboGenero.setValue(rs.getString("genero"));
-                    comboEstadoCivil.setValue(rs.getString("estado civil"));
+                    comboEstadoCivil.setValue(rs.getString("estadoCivil"));
 
                     //LinhaTabelaCliente linha = new LinhaTabelaCliente(id, nome, sobrenome, telPrincipal, email, cpf);
                     //tableCliente.getItems().add(linha);
