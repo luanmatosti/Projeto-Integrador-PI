@@ -5,6 +5,7 @@
  */
 package com.mycompany.projetointegrador;
 
+import static com.mycompany.projetointegrador.CadastrarItemEdicaoController.idEdicao;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -183,7 +184,41 @@ public class CadastrarClienteEdicaoController implements Initializable {
             e.printStackTrace();
         }
      }
-    }
+        else{
+            String sql = "UPDATE produto SET cep = ?, logradouro = ?, numero = ?, complemento = ?, bairro = ?, cidade = ?, estado = ?, dtNascimento = ?, rg = ?, cpf = ?, telPrincipal = ?, telSecundario = ?, email = ?, nome = ?, sobrenome = ?, genero = ?, estadoCivil = ?  WHERE id = ?";
+
+            try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
+                ps.setString(1, txtNome.getText());            
+                ps.setString(2, txtSobrenome.getText());            
+                ps.setDate(3, Date.valueOf(dtNascimento.getValue()));           
+                ps.setString(4, txtRg.getText());           
+                ps.setString(5, txtCpf.getText());            
+                ps.setString(6, comboGenero.getSelectionModel().getSelectedItem().toString());            
+                ps.setString(7, comboEstadoCivil.getSelectionModel().getSelectedItem().toString());           
+                ps.setString(8, txtCep.getText());          
+                ps.setString(9, txtLogradouro.getText());          
+                ps.setString(10, txtNumero.getText());        
+                ps.setString(11, txtComplemento.getText());           
+                ps.setString(12, txtBairro.getText());            
+                ps.setString(13, txtCidade.getText());            
+                ps.setString(14, txtEstado.getText());            
+                ps.setString(15, txtTelPrincipal.getText());            
+                ps.setString(16, txtTelSecundario.getText());           
+                ps.setString(17, txtEmail.getText());
+                ps.setInt(18, idEdicao);
+                
+                ps.execute();
+                limparTela();
+                
+                estaEditando = false;
+                idEdicao = null;
+   
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+         }
+        }
+    
     private void limparTela() {
         txtCep.clear();
         txtLogradouro.clear();
@@ -204,3 +239,5 @@ public class CadastrarClienteEdicaoController implements Initializable {
         comboEstadoCivil.getSelectionModel().clearSelection();
     }
 }
+
+    
