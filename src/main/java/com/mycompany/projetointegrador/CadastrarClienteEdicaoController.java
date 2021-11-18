@@ -78,11 +78,19 @@ public class CadastrarClienteEdicaoController implements Initializable {
         
         if (idEdicao != null) {
             String sql = "SELECT * FROM cliente WHERE id = ?";
+            
             try (PreparedStatement ps = db.connect().prepareStatement(sql)) {
                 ps.setInt(1, idEdicao);
                 ResultSet rs = ps.executeQuery();
 
                 if (rs.next()) {
+                    txtNome.setText(rs.getString("nome"));
+                    txtSobrenome.setText(rs.getString("sobrenome"));
+                    dtNascimento.setValue(rs.getDate("dtNascimento").toLocalDate());
+                    txtRg.setText(rs.getString("rg"));
+                    txtCpf.setText(rs.getString("cpf"));
+                    comboGenero.setValue(rs.getString("genero"));
+                    comboEstadoCivil.setValue(rs.getString("estadoCivil"));
                     txtCep.setText(rs.getString("cep"));
                     txtLogradouro.setText(rs.getString("logradouro"));
                     txtNumero.setText(rs.getString("numero"));
@@ -90,19 +98,9 @@ public class CadastrarClienteEdicaoController implements Initializable {
                     txtBairro.setText(rs.getString("bairro"));
                     txtCidade.setText(rs.getString("cidade"));
                     txtEstado.setText(rs.getString("estado"));
-                    dtNascimento.setValue(rs.getDate("dtNascimento").toLocalDate());
-                    txtRg.setText(rs.getString("rg"));
-                    txtCpf.setText(rs.getString("cpf"));
                     txtTelPrincipal.setText(rs.getString("telPrincipal"));
                     txtTelSecundario.setText(rs.getString("telSecundario"));
                     txtEmail.setText(rs.getString("email"));
-                    txtNome.setText(rs.getString("nome"));
-                    txtSobrenome.setText(rs.getString("sobrenome"));
-                    comboGenero.setValue(rs.getString("genero"));
-                    comboEstadoCivil.setValue(rs.getString("estadoCivil"));
-
-                    //LinhaTabelaCliente linha = new LinhaTabelaCliente(id, nome, sobrenome, telPrincipal, email, cpf);
-                    //tableCliente.getItems().add(linha);
           
                     estaEditando = true;
                 }
@@ -139,53 +137,34 @@ public class CadastrarClienteEdicaoController implements Initializable {
         String sql = "INSERT INTO cliente (nome,sobrenome,dtNascimento,rg,cpf,genero,estadoCivil,cep,logradouro,numero,complemento,bairro,cidade,estado,telPrincipal,telSecundario,email) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try (PreparedStatement ps = db.connect().prepareStatement(sql)) {
-            //nome
+
             ps.setString(1, txtNome.getText());
-            //sobrenome
             ps.setString(2, txtSobrenome.getText());
-            //dtNascimento
             ps.setDate(3, Date.valueOf(dtNascimento.getValue()));
-            //rg
             ps.setString(4, txtRg.getText());
-            //cpf
             ps.setString(5, txtCpf.getText());
-            //genero
             ps.setString(6, comboGenero.getSelectionModel().getSelectedItem().toString());
-            //estadoCivil
             ps.setString(7, comboEstadoCivil.getSelectionModel().getSelectedItem().toString());
-            //cep
             ps.setString(8, txtCep.getText());
-            //logradouro
             ps.setString(9, txtLogradouro.getText());
-            //numero,
             ps.setString(10, txtNumero.getText());
-            //complemento
             ps.setString(11, txtComplemento.getText());
-            //bairro
             ps.setString(12, txtBairro.getText());
-            //cidade
             ps.setString(13, txtCidade.getText());
-            //estado
             ps.setString(14, txtEstado.getText());
-            //telPricipal
             ps.setString(15, txtTelPrincipal.getText());
-            //telSecundario
             ps.setString(16, txtTelSecundario.getText());
-            //email
             ps.setString(17, txtEmail.getText());
 
             ps.execute();
-            // TALVEZ TENHA QUE TIRAR ESSE LIMPAR TELA
             limparTela();
-            
-            estaEditando = false;
-            idEdicao = null;
+    
         } catch (Exception e) {
             e.printStackTrace();
         }
      }
         else{
-            String sql = "UPDATE produto SET cep = ?, logradouro = ?, numero = ?, complemento = ?, bairro = ?, cidade = ?, estado = ?, dtNascimento = ?, rg = ?, cpf = ?, telPrincipal = ?, telSecundario = ?, email = ?, nome = ?, sobrenome = ?, genero = ?, estadoCivil = ?  WHERE id = ?";
+            String sql = "UPDATE cliente SET nome = ?,sobrenome = ?,dtNascimento = ?,rg = ?,cpf = ?,genero = ?,estadoCivil = ?,cep = ?,logradouro = ?,numero = ?,complemento = ?,bairro = ?,cidade = ?,estado = ?,telPrincipal = ?,telSecundario = ?,email = ? WHERE id = ?";
 
             try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
                 ps.setString(1, txtNome.getText());            
