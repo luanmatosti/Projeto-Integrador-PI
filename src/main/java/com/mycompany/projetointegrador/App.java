@@ -27,19 +27,24 @@ public class App extends Application {
         stage.getIcons().add(new Image("/com/mycompany/projetointegrador/imagens/iconelivropagina.png"));
         stage.show();
     }
-    
-    //teste
 
+    //teste
     static void setRoot(String fxml, BorderPane container) throws IOException {
         container.setCenter(loadFXML(fxml));
     }
 
-    static void abrirTelaEdicaoCliente(int id) throws IOException{
+    static void abrirTelaEdicaoCliente(int id) throws IOException {
         CadastrarClienteEdicaoController.idEdicao = id;
         BorderPane container = (BorderPane) scene.lookup("#container");
         container.setCenter(loadFXML("CadastrarClienteEdicao"));
     }
-    
+
+    static void abrirTelaEdicaoItem(int id) throws IOException {
+        CadastrarItemEdicaoController.idEdicao = id;
+        BorderPane container = (BorderPane) scene.lookup("#container");
+        container.setCenter(loadFXML("CadastrarItemEdicao"));
+    }
+
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();

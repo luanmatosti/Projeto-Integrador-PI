@@ -5,6 +5,7 @@
  */
 package com.mycompany.projetointegrador;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -73,7 +74,12 @@ public class ConsultarItemController implements Initializable {
     }
 
     @FXML
-    private void alterar(ActionEvent event) {
+    private void alterar(ActionEvent event) throws IOException {
+        LinhaTabelaProduto linha = tableProduto.getSelectionModel().getSelectedItem();
+        if(linha != null){
+            int id = linha.getId();
+            App.abrirTelaEdicaoItem(id);    
+        }
     }
 
     @FXML

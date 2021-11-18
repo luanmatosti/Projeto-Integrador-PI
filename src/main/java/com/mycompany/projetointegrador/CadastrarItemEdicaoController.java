@@ -8,6 +8,7 @@ package com.mycompany.projetointegrador;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -50,6 +51,31 @@ public class CadastrarItemEdicaoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         comboCategoria.getItems().add("Suspense");
         comboCategoria.getItems().add("Romance");
+        
+        if(idEdicao != null) {
+            String sql = "SELECT * FROM produto WHERE id = ?";
+            
+            try(PreparedStatement ps = db.connect().prepareStatement(sql)){
+                ps.setInt(1, idEdicao);
+                ResultSet rs = ps.executeQuery();
+                
+                if(rs.next()){
+                    txtAutor.setText(rs.getString("autor"));
+                    txtTitulo.setText(rs.getString("titulo"));
+                    txtEditora.setText(rs.getString("editora"));
+                    dtPublicacao.setValue(rs.getDate("dtPublicacao").toLocalDate());
+                    txtPagina.setText(String.valueOf(rs.getInt("nmrPagina")));
+                    //comboCategoria.setSelectionModel(rs.getString("categoria"));
+                    txtPreco.setText(String.valueOf(rs.getDouble("preco")));
+                    txtQtd.setText(String.valueOf(rs.getInt("qtd")));
+                    
+                    estaEditando = true;
+                }
+            }
+            catch(Exception e){
+            e.printStackTrace();
+            }
+        }
     }
 
     @FXML
@@ -78,14 +104,15 @@ public class CadastrarItemEdicaoController implements Initializable {
                 ps.setString(6, comboCategoria.getSelectionModel().getSelectedItem().toString());
                 ps.setDouble(7, Double.parseDouble(txtPreco.getText()));
                 ps.setInt(8, Integer.parseInt(txtQtd.getText()));
-                ps.setInt(9, idEdicao);
+                
 
                 ps.execute();
                 limparTela();     
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        } else {
+        } 
+        else {
             String sql = "UPDATE produto SET autor = ?, titulo = ?, editora = ?, dtPublicacao = ?, nmrPagina = ?, categoria = ?, preco = ?, qtd = ? WHERE id = ?";
 
             try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
@@ -97,6 +124,7 @@ public class CadastrarItemEdicaoController implements Initializable {
                 ps.setString(6, comboCategoria.getSelectionModel().getSelectedItem().toString());
                 ps.setDouble(7, Double.parseDouble(txtPreco.getText()));
                 ps.setInt(8, Integer.parseInt(txtQtd.getText()));
+                ps.setInt(9, idEdicao);
 
                 ps.execute();
                 limparTela();
