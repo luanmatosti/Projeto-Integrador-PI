@@ -34,6 +34,12 @@ public class App extends Application {
         container.setCenter(loadFXML(fxml));
     }
 
+    static void abrirTelaEdicaoCliente(int id) throws IOException{
+        CadastrarClienteEdicaoController.idEdicao = id;
+        BorderPane container = (BorderPane) scene.lookup("#container");
+        container.setCenter(loadFXML("CadastrarClienteEdicao"));
+    }
+    
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();

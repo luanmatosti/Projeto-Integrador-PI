@@ -59,6 +59,8 @@ public class ConsultarClienteController implements Initializable {
 
     @FXML
     private void editar(ActionEvent event) {
+        LinhaTabelaCliente linha = tableCliente.getSelectionModel().getSelectedItem();
+        
     }
 
     @FXML

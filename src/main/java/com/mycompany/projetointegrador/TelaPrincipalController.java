@@ -63,7 +63,7 @@ public class TelaPrincipalController implements Initializable {
 
     @FXML
     private void abrirEditarCliente(ActionEvent event) throws IOException {
-        App.setRoot("CadastrarClienteEdicao", container);
+        //App.setRoot("CadastrarClienteEdicao", container);
     }
 
     @FXML

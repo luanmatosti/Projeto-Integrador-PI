@@ -8,7 +8,10 @@ package com.mycompany.projetointegrador;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -59,6 +62,9 @@ public class CadastrarClienteEdicaoController implements Initializable {
     @FXML
     private ComboBox comboEstadoCivil;
 
+    public static Integer idEdicao = null;
+    private boolean estaEditando = false;
+
     /**
      * Initializes the controller class.
      */
@@ -71,6 +77,29 @@ public class CadastrarClienteEdicaoController implements Initializable {
         comboEstadoCivil.getItems().add("Divorciado(a)");
         comboEstadoCivil.getItems().add("Viuvo(a)");
         comboEstadoCivil.getItems().add("União Estável");
+        /*if (idEdicao != null) {
+            String sql = "SELECT * FROM cliente WHERE id = ?";
+            try (PreparedStatement ps = db.connect().prepareStatement(sql)) {
+                ps.setInt(1, idEdicao);
+
+                ResultSet rs = ps.executeQuery();
+
+                if (rs.next()) {
+
+                    Integer id = rs.getInt("id");
+                    String nome = rs.getString("nome");
+                    String sobrenome = rs.getString("sobrenome");
+                    String telPrincipal = rs.getString("telPrincipal");
+                    String email = rs.getString("email");
+                    String cpf = rs.getString("cpf");
+
+                    LinhaTabelaCliente linha = new LinhaTabelaCliente(id, nome, sobrenome, telPrincipal, email, cpf);
+                    tableCliente.getItems().add(linha);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }*/
     }
 
     @FXML
@@ -98,7 +127,7 @@ public class CadastrarClienteEdicaoController implements Initializable {
     private void cadastrar(ActionEvent event) {
         String sql = "INSERT INTO cliente (nome,sobrenome,dtNascimento,rg,cpf,genero,estadoCivil,cep,logradouro,numero,complemento,bairro,cidade,estado,telPrincipal,telSecundario,email) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
-        try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
+        try (PreparedStatement ps = db.connect().prepareStatement(sql)) {
             //nome
             ps.setString(1, txtNome.getText());
             //sobrenome
