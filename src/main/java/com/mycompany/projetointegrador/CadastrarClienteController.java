@@ -8,6 +8,7 @@ package com.mycompany.projetointegrador;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -59,6 +60,9 @@ public class CadastrarClienteController implements Initializable {
     @FXML
     private ComboBox comboEstadoCivil;
 
+    public static Integer idEdicao = null;
+    private boolean estaEditando = false;
+
     /**
      * Initializes the controller class.
      */
@@ -71,6 +75,39 @@ public class CadastrarClienteController implements Initializable {
         comboEstadoCivil.getItems().add("Divorciado(a)");
         comboEstadoCivil.getItems().add("Viuvo(a)");
         comboEstadoCivil.getItems().add("União Estável");
+        
+        if (idEdicao != null) {
+            String sql = "SELECT * FROM cliente WHERE id = ?";
+            
+            try (PreparedStatement ps = db.connect().prepareStatement(sql)) {
+                ps.setInt(1, idEdicao);
+                ResultSet rs = ps.executeQuery();
+
+                if (rs.next()) {
+                    txtNome.setText(rs.getString("nome"));
+                    txtSobrenome.setText(rs.getString("sobrenome"));
+                    dtNascimento.setValue(rs.getDate("dtNascimento").toLocalDate());
+                    txtRg.setText(rs.getString("rg"));
+                    txtCpf.setText(rs.getString("cpf"));
+                    comboGenero.setValue(rs.getString("genero"));
+                    comboEstadoCivil.setValue(rs.getString("estadoCivil"));
+                    txtCep.setText(rs.getString("cep"));
+                    txtLogradouro.setText(rs.getString("logradouro"));
+                    txtNumero.setText(rs.getString("numero"));
+                    txtComplemento.setText(rs.getString("complemento"));
+                    txtBairro.setText(rs.getString("bairro"));
+                    txtCidade.setText(rs.getString("cidade"));
+                    txtEstado.setText(rs.getString("estado"));
+                    txtTelPrincipal.setText(rs.getString("telPrincipal"));
+                    txtTelSecundario.setText(rs.getString("telSecundario"));
+                    txtEmail.setText(rs.getString("email"));
+          
+                    estaEditando = true;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @FXML
@@ -96,50 +133,69 @@ public class CadastrarClienteController implements Initializable {
 
     @FXML
     private void cadastrar(ActionEvent event) {
+        if (!estaEditando) {
         String sql = "INSERT INTO cliente (nome,sobrenome,dtNascimento,rg,cpf,genero,estadoCivil,cep,logradouro,numero,complemento,bairro,cidade,estado,telPrincipal,telSecundario,email) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
-        try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
-            //nome
+        try (PreparedStatement ps = db.connect().prepareStatement(sql)) {
+
             ps.setString(1, txtNome.getText());
-            //sobrenome
             ps.setString(2, txtSobrenome.getText());
-            //dtNascimento
             ps.setDate(3, Date.valueOf(dtNascimento.getValue()));
-            //rg
             ps.setString(4, txtRg.getText());
-            //cpf
             ps.setString(5, txtCpf.getText());
-            //genero
             ps.setString(6, comboGenero.getSelectionModel().getSelectedItem().toString());
-            //estadoCivil
             ps.setString(7, comboEstadoCivil.getSelectionModel().getSelectedItem().toString());
-            //cep
             ps.setString(8, txtCep.getText());
-            //logradouro
             ps.setString(9, txtLogradouro.getText());
-            //numero,
             ps.setString(10, txtNumero.getText());
-            //complemento
             ps.setString(11, txtComplemento.getText());
-            //bairro
             ps.setString(12, txtBairro.getText());
-            //cidade
             ps.setString(13, txtCidade.getText());
-            //estado
             ps.setString(14, txtEstado.getText());
-            //telPricipal
             ps.setString(15, txtTelPrincipal.getText());
-            //telSecundario
             ps.setString(16, txtTelSecundario.getText());
-            //email
             ps.setString(17, txtEmail.getText());
 
             ps.execute();
-
             limparTela();
+    
         } catch (Exception e) {
             e.printStackTrace();
         }
+     }
+        else{
+            String sql = "UPDATE cliente SET nome = ?,sobrenome = ?,dtNascimento = ?,rg = ?,cpf = ?,genero = ?,estadoCivil = ?,cep = ?,logradouro = ?,numero = ?,complemento = ?,bairro = ?,cidade = ?,estado = ?,telPrincipal = ?,telSecundario = ?,email = ? WHERE id = ?";
+
+            try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
+                ps.setString(1, txtNome.getText());            
+                ps.setString(2, txtSobrenome.getText());            
+                ps.setDate(3, Date.valueOf(dtNascimento.getValue()));           
+                ps.setString(4, txtRg.getText());           
+                ps.setString(5, txtCpf.getText());            
+                ps.setString(6, comboGenero.getSelectionModel().getSelectedItem().toString());            
+                ps.setString(7, comboEstadoCivil.getSelectionModel().getSelectedItem().toString());           
+                ps.setString(8, txtCep.getText());          
+                ps.setString(9, txtLogradouro.getText());          
+                ps.setString(10, txtNumero.getText());        
+                ps.setString(11, txtComplemento.getText());           
+                ps.setString(12, txtBairro.getText());            
+                ps.setString(13, txtCidade.getText());            
+                ps.setString(14, txtEstado.getText());            
+                ps.setString(15, txtTelPrincipal.getText());            
+                ps.setString(16, txtTelSecundario.getText());           
+                ps.setString(17, txtEmail.getText());
+                ps.setInt(18, idEdicao);
+                
+                ps.execute();
+                limparTela();
+                
+                estaEditando = false;
+                idEdicao = null;
+   
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+         }
     }
 
     private void limparTela() {

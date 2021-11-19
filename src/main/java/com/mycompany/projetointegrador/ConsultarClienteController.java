@@ -63,7 +63,7 @@ public class ConsultarClienteController implements Initializable {
         LinhaTabelaCliente linha = tableCliente.getSelectionModel().getSelectedItem();
         if (linha != null) {
             int id = linha.getId();
-            App.abrirTelaEdicaoCliente(id);
+            App.abrirTelaCliente(id);
         }
     }
 

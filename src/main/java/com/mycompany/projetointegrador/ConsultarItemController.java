@@ -78,7 +78,7 @@ public class ConsultarItemController implements Initializable {
         LinhaTabelaProduto linha = tableProduto.getSelectionModel().getSelectedItem();
         if(linha != null){
             int id = linha.getId();
-            App.abrirTelaEdicaoItem(id);    
+            App.abrirTelaItem(id);    
         }
     }
 

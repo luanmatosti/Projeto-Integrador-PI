@@ -14,14 +14,12 @@
             <items>
               <MenuItem mnemonicParsing="false" onAction="#abrirCadastrarCliente" text="Cadastrar Cliente" />
                   <MenuItem mnemonicParsing="false" onAction="#abrirConsultarCliente" text="Consultar Cliente" />
-                  <MenuItem mnemonicParsing="false" onAction="#abrirEditarCliente" text="Editar Cliente" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Itens">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#abrirCadastrarItens" text="Cadastrar itens" />
                   <MenuItem mnemonicParsing="false" onAction="#abrirConsultarItens" text="Consultar itens" />
-                  <MenuItem mnemonicParsing="false" onAction="#abrirEditarItens" text="Editar itens" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Venda">

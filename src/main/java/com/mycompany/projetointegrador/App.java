@@ -33,16 +33,16 @@ public class App extends Application {
         container.setCenter(loadFXML(fxml));
     }
 
-    static void abrirTelaEdicaoCliente(int id) throws IOException {
-        CadastrarClienteEdicaoController.idEdicao = id;
+    static void abrirTelaCliente(int id) throws IOException {
+        CadastrarClienteController.idEdicao = id;
         BorderPane container = (BorderPane) scene.lookup("#container");
-        container.setCenter(loadFXML("CadastrarClienteEdicao"));
+        container.setCenter(loadFXML("CadastrarCliente"));
     }
 
-    static void abrirTelaEdicaoItem(int id) throws IOException {
-        CadastrarItemEdicaoController.idEdicao = id;
+    static void abrirTelaItem(int id) throws IOException {
+        CadastrarItemController.idEdicao = id;
         BorderPane container = (BorderPane) scene.lookup("#container");
-        container.setCenter(loadFXML("CadastrarItemEdicao"));
+        container.setCenter(loadFXML("CadastrarItem"));
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
