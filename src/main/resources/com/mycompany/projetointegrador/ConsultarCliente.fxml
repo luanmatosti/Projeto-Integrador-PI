@@ -51,8 +51,8 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtCpf" prefHeight="25.0" prefWidth="501.0" HBox.hgrow="ALWAYS" />
-                        <Button mnemonicParsing="false" onAction="#consultar" prefHeight="25.0" prefWidth="94.0" text="Consultar" />
+                        <TextField fx:id="txtCpf" onKeyPressed="#tratarCaixaPesquisar" prefHeight="25.0" prefWidth="501.0" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="buttonConsultar" mnemonicParsing="false" onAction="#consultar" prefHeight="25.0" prefWidth="94.0" text="Consultar" />
                      </children>
                   </HBox>
                </children>

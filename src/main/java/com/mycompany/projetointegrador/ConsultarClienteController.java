@@ -13,10 +13,13 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 /**
  * FXML Controller class
@@ -41,6 +44,8 @@ public class ConsultarClienteController implements Initializable {
     private TextField txtCpf;
     @FXML
     private TableColumn<LinhaTabelaCliente, Integer> colunaId;
+    @FXML
+    private Button buttonConsultar;
 
     /**
      * Initializes the controller class.
@@ -141,6 +146,13 @@ public class ConsultarClienteController implements Initializable {
 
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void tratarCaixaPesquisar(KeyEvent event) {
+        if(event.getCode()== KeyCode.ENTER){
+        pesquisarCpf();
         }
     }
 }
