@@ -24,11 +24,12 @@
                         <Label layoutX="10.0" layoutY="59.0" text="Quantidade" />
                         <TextField fx:id="editQtdProduto" layoutX="10.0" layoutY="81.0" prefHeight="25.0" prefWidth="129.0" promptText="Quantidade" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                         <Label layoutX="10.0" layoutY="111.0" text="Data Pedido" />
-                        <Button layoutX="11.0" layoutY="170.0" mnemonicParsing="false" onAction="#adicionar" prefHeight="25.0" prefWidth="72.0" text="Adicionar" />
+                        <Button layoutX="11.0" layoutY="170.0" mnemonicParsing="false" onAction="#adicionarProduto" prefHeight="25.0" prefWidth="72.0" text="Adicionar" />
                         <Label layoutX="10.0" layoutY="245.0" prefHeight="17.0" prefWidth="63.0" text="Cliente" />
                         <TextField fx:id="editCpf" layoutX="10.0" layoutY="267.0" prefHeight="25.0" prefWidth="129.0" promptText="CPF" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                        <Button layoutX="11.0" layoutY="300.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="72.0" text="Procurar" />
+                        <Button layoutX="11.0" layoutY="300.0" mnemonicParsing="false" onAction="#procurarCliente" prefHeight="25.0" prefWidth="72.0" text="Procurar" />
                         <DatePicker fx:id="dataPedido" layoutX="10.0" layoutY="134.0" prefHeight="25.0" prefWidth="123.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                        <Button layoutX="10.0" layoutY="209.0" mnemonicParsing="false" onAction="#mudarQtdProduto" prefHeight="25.0" prefWidth="104.0" text="Mudar Qtd Item" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                      </children>
                   </AnchorPane>
                </content>
@@ -48,9 +49,18 @@
       </HBox>
       <HBox layoutX="14.0" layoutY="387.0" prefHeight="36.0" prefWidth="236.0" spacing="14.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="14.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#finalizarPedido" prefHeight="36.0" prefWidth="63.0" text="Finalizar" HBox.hgrow="ALWAYS" />
-            <Button mnemonicParsing="false" onAction="#removerProduto" prefHeight="36.0" prefWidth="72.0" text="Remover" HBox.hgrow="ALWAYS" />
-            <Button mnemonicParsing="false" onAction="#cancelarPedido" prefHeight="36.0" prefWidth="72.0" text="Cancelar" HBox.hgrow="ALWAYS" />
+            <Button mnemonicParsing="false" onAction="#finalizarPedido" prefHeight="36.0" prefWidth="63.0" text="Finalizar" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#removerProduto" prefHeight="36.0" prefWidth="72.0" text="Remover" textFill="#f50000" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#cancelarPedido" prefHeight="36.0" prefWidth="72.0" text="Cancelar" textFill="#e10e0e" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
          </children>
       </HBox>
       <HBox layoutX="482.0" layoutY="392.0" prefHeight="27.0" prefWidth="208.0" spacing="5.0" AnchorPane.bottomAnchor="11.0" AnchorPane.rightAnchor="10.0">
