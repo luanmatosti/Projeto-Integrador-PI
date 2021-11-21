@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.projetointegrador;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,28 +9,25 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
-/**
- * FXML Controller class
- *
- * @author lmato
- */
+
 public class RelatorioController implements Initializable {
 
     @FXML
-    private TableView<?> tableRelatorio;
+    private TableView<LinhaTabelaRelatorio> tableRelatorio;
     @FXML
-    private TableColumn<?, ?> colunaCliente;
+    private TableColumn<LinhaTabelaRelatorio, String> colunaCliente;
     @FXML
-    private TableColumn<?, ?> colunaCodVenda;
+    private TableColumn<LinhaTabelaRelatorio, Integer> colunaCodVenda;
     @FXML
-    private TableColumn<?, ?> colunaData;
+    private TableColumn<LinhaTabelaRelatorio, LocalDate> colunaData;
     @FXML
-    private TableColumn<?, ?> colunaProduto;
+    private TableColumn<LinhaTabelaRelatorio, String> colunaProduto;
     @FXML
-    private TableColumn<?, ?> colunaQtd;
+    private TableColumn<LinhaTabelaRelatorio, Integer> colunaQtd;
     @FXML
-    private TableColumn<?, ?> colunaTotal;
+    private TableColumn<LinhaTabelaRelatorio, Double> colunaTotal;
     @FXML
     private DatePicker dtDe;
     @FXML
@@ -45,11 +38,25 @@ public class RelatorioController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
+     colunaCliente.setCellValueFactory(new PropertyValueFactory("cliente"));
+     colunaCodVenda.setCellValueFactory(new PropertyValueFactory("codVenda"));
+     colunaData.setCellValueFactory(new PropertyValueFactory("data"));   
+     colunaProduto.setCellValueFactory(new PropertyValueFactory("nomeProduto"));
+     colunaQtd.setCellValueFactory(new PropertyValueFactory("qtd"));
+     colunaTotal.setCellValueFactory(new PropertyValueFactory("total"));
+     
+     LinhaTabelaRelatorio ltr = new LinhaTabelaRelatorio("Leonardo", 50, LocalDate.now() , "O Pequeno Príncipe", 30, 50.00);
+        
     }
 
     @FXML
     private void pesquisar(ActionEvent event) {
+        /*verificar com Luan
+        if (txt.getText().isBlank()) {
+            atualizarTabela();
+        } else {
+            pesquisarCpf();*/
     }
 
 }

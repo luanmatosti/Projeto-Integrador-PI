@@ -21,7 +21,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("TelaPrincipal"), 700, 455);
         stage.setScene(scene);
-        stage.setMinWidth(700);
+        stage.setMinWidth(727);
         stage.setMinHeight(455);
         stage.setTitle("Livraria Saber");
         stage.getIcons().add(new Image("/com/mycompany/projetointegrador/imagens/iconelivropagina.png"));
