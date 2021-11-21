@@ -10,6 +10,8 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -22,16 +24,6 @@ import javafx.scene.control.TextField;
 public class VendaController implements Initializable {
 
     @FXML
-    private TextField txtCodProduto;
-    @FXML
-    private TextField txtQtd;
-    @FXML
-    private TextField txtPreco;
-    @FXML
-    private TextField txtProduto;
-    @FXML
-    private TextField txtCpf;
-    @FXML
     private TableView<?> tableVenda;
     @FXML
     private TableColumn<?, ?> colunaCodigo;
@@ -42,9 +34,17 @@ public class VendaController implements Initializable {
     @FXML
     private TableColumn<?, ?> colunaValor;
     @FXML
-    private TableColumn<?, ?> colunaTotal;
+    private TextField editProduto;
     @FXML
-    private TextField txtTotal;
+    private TextField editQtdProduto;
+    @FXML
+    private TextField editCpf;
+    @FXML
+    private DatePicker dataPedido;
+    @FXML
+    private TextField totalPedido;
+    @FXML
+    private Label labelCliente;
 
     /**
      * Initializes the controller class.
@@ -59,15 +59,15 @@ public class VendaController implements Initializable {
     }
 
     @FXML
-    private void finalizar(ActionEvent event) {
+    private void finalizarPedido(ActionEvent event) {
     }
 
     @FXML
-    private void remover(ActionEvent event) {
+    private void removerProduto(ActionEvent event) {
     }
 
     @FXML
-    private void cancelar(ActionEvent event) {
+    private void cancelarPedido(ActionEvent event) {
     }
 
 }
