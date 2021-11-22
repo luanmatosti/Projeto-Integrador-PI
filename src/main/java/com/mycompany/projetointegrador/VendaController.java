@@ -53,95 +53,90 @@ public class VendaController implements Initializable {
     private Label labelCliente;
 
     private Integer idCliente = null;
-    
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
+
         colunaCodigo.setCellValueFactory(new PropertyValueFactory("colunaCodigo"));
         colunaProduto.setCellValueFactory(new PropertyValueFactory("colunaProduto"));
         colunaQtd.setCellValueFactory(new PropertyValueFactory("colunaQtd"));
         colunaValor.setCellValueFactory(new PropertyValueFactory("colunaValor"));
-        //LinhaTabelaVenda ltv = new LinhaTabelaVenda(1,"",1,1);
+        //LinhaTabelaVenda ltv = new LinhaTabelaVenda(1,"1984",1,1);
         //tableVenda.getItems().add(ltv);
     }
-    
-
 
     @FXML
     private void finalizarPedido(ActionEvent event) {
         String sqlPedido = "INSERT INTO pedido VALUES (?,?)";
-        
-        try(PreparedStatement ps = db.connect().prepareStatement(sqlPedido, PreparedStatement.RETURN_GENERATED_KEYS)){
-            
+
+        try ( PreparedStatement ps = db.connect().prepareStatement(sqlPedido, PreparedStatement.RETURN_GENERATED_KEYS)) {
+
             ps.setDate(1, Date.valueOf(dataPedido.getValue()));
-            
-            ps.setInt(2,idCliente);
-            
+
+            ps.setInt(2, idCliente);
+
             ps.execute();
-            
+
             ResultSet rsKeys = ps.getGeneratedKeys();
-            if(rsKeys.next()){
-                int idPedido = rsKeys.getByte(1);
+            if (rsKeys.next()) {
+                int idPedido = rsKeys.getInt(1);
                 registrarItensPedido(idPedido);
-                decrementarEstoque();
+                //decrementarEstoque();
                 cancelarPedido(event);
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setContentText("Pedido Realizado");
                 alert.showAndWait();
-    
+
             }
-        }
-        catch(Exception e){
-            e.printStackTrace();        
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
-    
+
     //inserir itens na tabela explosão ItemPedido
-    private void registrarItensPedido(int idPedido){
-        for (int i=0; i<tableVenda.getItems().size();i++){
+    private void registrarItensPedido(int idPedido) {
+        for (int i = 0; i < tableVenda.getItems().size(); i++) {
             String sql = "INSERT INTO itemPedido (idPedido,idProduto, qtd, precoProduto) VALUES (?,?,?,?)";
-            
-            try(PreparedStatement ps = db.connect().prepareStatement(sql)){
-                ps.setInt(1,idPedido);
-                ps.setInt(2,tableVenda.getItems().get(i).getColunaCodigo());
-                ps.setInt(3,tableVenda.getItems().get(i).getColunaQtd());
-                ps.setFloat(4,tableVenda.getItems().get(i).getColunaValor());
-                
+
+            try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
+                ps.setInt(1, idPedido);
+                ps.setInt(2, tableVenda.getItems().get(i).getColunaCodigo());
+                ps.setInt(3, tableVenda.getItems().get(i).getColunaQtd());
+                ps.setFloat(4, tableVenda.getItems().get(i).getColunaValor());
+
                 ps.execute();
-            }
-            
-            catch(Exception e){
-                e.printStackTrace();
-            }
-        }
-    }
-    
-    private void decrementarEstoque(){
-          for (int i=0; i<tableVenda.getItems().size();i++){
-            String sql = "UPDATE produto SET qtd-- WHERE id = ?";
-            try(PreparedStatement ps = db.connect().prepareStatement(sql)){
-                ps.setInt(1,tableVenda.getItems().get(i).getColunaCodigo());
-                                
-                ps.execute();
-            }
-            
-            catch(Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
 
+   /*private void decrementarEstoque() {
+        for (int i = 0; i < tableVenda.getItems().size(); i++) {
+            String sql = "UPDATE produto SET qtd = 1 WHERE id = ?";
+            try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
+                ps.setInt(1, tableVenda.getItems().get(i).getColunaCodigo());
+
+                ps.execute();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+*/
+    
     @FXML
     private void removerProduto(ActionEvent event) {
-        if(tableVenda.getSelectionModel().getSelectedItem() ==null){
-            return;}
-        
+        if (tableVenda.getSelectionModel().getSelectedItem() == null) {
+            return;
+        }
+
         tableVenda.getItems().remove(tableVenda.getSelectionModel().getSelectedIndex());
-            
+
     }
 
     @FXML
@@ -154,46 +149,45 @@ public class VendaController implements Initializable {
         colunaValor = null;
         tableVenda.getItems().clear();
         dataPedido.setValue(null);
-        
+
     }
 
     @FXML
     private void procurarCliente(ActionEvent event) {
         String sql = "SELECT TOP 1 * FROM cliente WHERE  cpf = ?";
-        
-        try(PreparedStatement ps = db.connect().prepareStatement(sql)){
+
+        try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
             ps.setString(1, editCpf.getText());
-            
+
             ResultSet rs = ps.executeQuery();
-            if (rs.next()){
+            if (rs.next()) {
                 String nome = rs.getString("Nome");
                 labelCliente.setText(nome);
-                
+
                 idCliente = rs.getInt("id");
             }
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-    
+
+        }
     }
-}   
 
     @FXML
     private void adicionarProduto(ActionEvent event) {
-        if(editProduto.getText().isBlank() && editQtdProduto.getText().isBlank()){
+        if (editProduto.getText().isBlank() && editQtdProduto.getText().isBlank()) {
             return;
         }
-        
+
         String sql = "SELECT TOP 1 * FROM produto WHERE id = ?";
-        
-        try(PreparedStatement ps = db.connect().prepareStatement(sql)){
-            ps.setInt(1,Integer.parseInt(editProduto.getText()));
-            
-            ResultSet rs =ps.executeQuery();
-        
-            if(rs.next()){
+
+        try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
+            ps.setInt(1, Integer.parseInt(editProduto.getText()));
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
                 LinhaTabelaVenda ltv = new LinhaTabelaVenda(
-                        rs.getInt("id"),                       
+                        rs.getInt("id"),
                         rs.getString("titulo"),
                         Integer.parseInt(editQtdProduto.getText()),
                         rs.getFloat("preco"));
@@ -201,17 +195,17 @@ public class VendaController implements Initializable {
                 editProduto.clear();
                 editQtdProduto.clear();
             }
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     @FXML
     private void mudarQtdProduto(ActionEvent event) {
-        if(tableVenda.getSelectionModel().getSelectedItem() ==null){
-            return;}
-        
+        if (tableVenda.getSelectionModel().getSelectedItem() == null) {
+            return;
+        }
+
         LinhaTabelaVenda ltv = tableVenda.getSelectionModel().getSelectedItem();
         ltv.setColunaQtd(Integer.parseInt(editQtdProduto.getText()));
         tableVenda.refresh();
