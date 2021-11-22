@@ -117,7 +117,7 @@ public class VendaController implements Initializable {
 
    /*private void decrementarEstoque() {
         for (int i = 0; i < tableVenda.getItems().size(); i++) {
-            String sql = "UPDATE produto SET qtd = 1 WHERE id = ?";
+            String sql = "UPDATE produto SET qtd = ? WHERE id = ?";
             try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
                 ps.setInt(1, tableVenda.getItems().get(i).getColunaCodigo());
 
@@ -126,8 +126,8 @@ public class VendaController implements Initializable {
                 e.printStackTrace();
             }
         }
-    }
-*/
+    }*/
+
     
     @FXML
     private void removerProduto(ActionEvent event) {
