@@ -5,10 +5,13 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDate;
+import static java.time.temporal.ChronoUnit.DAYS;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -36,25 +39,34 @@ public class RelatorioController implements Initializable {
     @FXML
     private DatePicker dtAte;
 
-    /**
-     * Initializes the controller class.
-     */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-     colunaCliente.setCellValueFactory(new PropertyValueFactory("cliente"));
-     colunaCodVenda.setCellValueFactory(new PropertyValueFactory("codVenda"));
-     colunaData.setCellValueFactory(new PropertyValueFactory("data"));   
-     colunaProduto.setCellValueFactory(new PropertyValueFactory("nomeProduto"));
-     colunaQtd.setCellValueFactory(new PropertyValueFactory("qtd"));
-     colunaTotal.setCellValueFactory(new PropertyValueFactory("total"));
+     colunaCliente.setCellValueFactory(new PropertyValueFactory("colunaCliente"));
+     colunaCodVenda.setCellValueFactory(new PropertyValueFactory("colunaCodVenda"));
+     colunaData.setCellValueFactory(new PropertyValueFactory("colunaData"));   
+     colunaProduto.setCellValueFactory(new PropertyValueFactory("colunaProduto"));
+     colunaQtd.setCellValueFactory(new PropertyValueFactory("colunaQtd"));
+     colunaTotal.setCellValueFactory(new PropertyValueFactory("colunaTotal"));
      
-     LinhaTabelaRelatorio ltr = new LinhaTabelaRelatorio("Leonardo", 50, LocalDate.now() , "O Pequeno Príncipe", 30, 50.00);
+     //LinhaTabelaRelatorio ltr = new LinhaTabelaRelatorio("Leonardo", 50, LocalDate.now() , "O Pequeno Príncipe", 30, 50.00);
         
     }
 
     @FXML
     private void pesquisar(ActionEvent event) {
+        long dias = DAYS.between(dtDe.getValue(), dtAte.getValue().plusDays(1));
+        
+        if (dias < 0 || dias > 31){
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setContentText("A Data Inicial não pode ser maior do que a Data Final, "
+                    + "e o período do relatório não pode exceder 30 dias.");
+            alert.showAndWait();
+            return;
+        }
+        tableRelatorio.getItems().clear();
+        
         /*verificar com Luan (conflito RelatorioController e LinhaTabelaRelatorio)*/
 String sql = "SELECT cliente.nome, pedido.idPedido,produto.id, produto.preco,"
 + "pedido.dataPedido FROM pedido "
@@ -63,7 +75,7 @@ String sql = "SELECT cliente.nome, pedido.idPedido,produto.id, produto.preco,"
 + "INNER JOIN produto ON itemPedido.idProduto = produto.id ";
 
 //Verificar Luan (por Leonardo)
-/*try(PreparedStatement ps= db.connect().prepareStatement(sql)){
+try(PreparedStatement ps= db.connect().prepareStatement(sql)){
 ps.setDate(1, Date.valueOf(dtDe.getValue()));
 ps.setDate(2, Date.valueOf(dtAte.getValue()));
 
@@ -72,11 +84,18 @@ ResultSet rs = ps.executeQuery();
 
 while (rs.next()){
     LinhaTabelaRelatorio ltr = new LinhaTabelaRelatorio(
-            rs.getString("nome"),
+           /*rs.getString("nome"),
             rs.getInt("idPedido"),
             rs.getInt("id"),
             rs.getDouble("preco"),
-            rs.getDate("dataPedido").toLocalDate()
+            rs.getDate("dataPedido").toLocalDate()*/
+            
+rs.getString("nome"),
+rs.getInt("idPedido"),
+rs.getDate("dataPedido").toLocalDate(),
+rs.getString("titulo"),
+rs.getInt("qtd"),
+rs.getDouble("preco")
     );
     
     tableRelatorio.getItems().add(ltr);
@@ -86,7 +105,7 @@ while (rs.next()){
 }
 catch(Exception e){
     e.printStackTrace();
-}*/
-    }
 }
+    }
 
+}

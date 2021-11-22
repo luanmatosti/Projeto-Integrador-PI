@@ -4,68 +4,68 @@ import java.time.LocalDate;
 
 public class LinhaTabelaRelatorio {
     
-private String cliente;
-private Integer codVenda;
-private LocalDate data;
-private String nomeProduto;
-private Integer qtd;
-private Double valor;
+private String colunaCliente;
+private Integer colunaCodVenda;
+private LocalDate colunaData;
+private String colunaProduto;
+private Integer colunaQtd;
+private Double colunaTotal;
 
-    public LinhaTabelaRelatorio(String cliente, int codVenda, LocalDate data, String nomeProduto, Integer qtd, Double valor) {
-        this.cliente = cliente;
-        this.codVenda = codVenda;
-        this.data = data;
-        this.nomeProduto = nomeProduto;
-        this.qtd = qtd;
-        this.valor = valor;
+    public LinhaTabelaRelatorio(String colunaCliente, int colunaCodVenda, LocalDate colunaData, String colunaProduto, Integer colunaQtd, Double colunaTotal) {
+        this.colunaCliente = colunaCliente;
+        this.colunaCodVenda = colunaCodVenda;
+        this.colunaData = colunaData;
+        this.colunaProduto = colunaProduto;
+        this.colunaQtd = colunaQtd;
+        this.colunaTotal = colunaTotal;
     }
 
-    public String getCliente() {
-        return cliente;
+    public String getcolunaCliente() {
+        return colunaCliente;
     }
 
-    public void setCliente(String cliente) {
-        this.cliente = cliente;
+    public void setcolunaCliente(String colunaCliente) {
+        this.colunaCliente = colunaCliente;
     }
 
-    public Integer getCodVenda() {
-        return codVenda;
+    public Integer getcolunaCodVenda() {
+        return colunaCodVenda;
     }
 
-    public void setCodVenda(Integer codVenda) {
-        this.codVenda = codVenda;
+    public void setcolunaCodVenda(Integer colunaCodVenda) {
+        this.colunaCodVenda = colunaCodVenda;
     }
 
-    public LocalDate getData() {
-        return data;
+    public LocalDate getcolunaData() {
+        return colunaData;
     }
 
-    public void setData(LocalDate data) {
-        this.data = data;
+    public void setcolunaData(LocalDate colunaData) {
+        this.colunaData = colunaData;
     }
 
-    public String getNomeProduto() {
-        return nomeProduto;
+    public String getcolunaProduto() {
+        return colunaProduto;
     }
 
-    public void setNomeProduto(String nomeProduto) {
-        this.nomeProduto = nomeProduto;
+    public void setcolunaProduto(String colunaProduto) {
+        this.colunaProduto = colunaProduto;
     }
 
-    public Integer getQtd() {
-        return qtd;
+    public Integer getcolunaQtd() {
+        return colunaQtd;
     }
 
-    public void setQtd(Integer qtd) {
-        this.qtd = qtd;
+    public void setcolunaQtd(Integer colunaQtd) {
+        this.colunaQtd = colunaQtd;
     }
 
-    public Double getValor() {
-        return valor;
+    public Double getcolunaTotal() {
+        return colunaTotal;
     }
 
-    public void setValor(Double valor) {
-        this.valor = valor;
+    public void setcolunaTotal(Double colunaTotal) {
+        this.colunaTotal = colunaTotal;
     }
 
 }
