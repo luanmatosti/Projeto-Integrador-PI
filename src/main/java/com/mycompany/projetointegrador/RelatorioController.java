@@ -50,7 +50,7 @@ public class RelatorioController implements Initializable {
      colunaQtd.setCellValueFactory(new PropertyValueFactory("colunaQtd"));
      colunaTotal.setCellValueFactory(new PropertyValueFactory("colunaTotal"));
      
-     //LinhaTabelaRelatorio ltr = new LinhaTabelaRelatorio("Leonardo", 50, LocalDate.now() , "O Pequeno Príncipe", 30, 50.00);
+     LinhaTabelaRelatorio ltr = new LinhaTabelaRelatorio("Leonardo", 50, LocalDate.now() , "O Pequeno Príncipe", 30, 50.00);
         
     }
 
@@ -68,11 +68,11 @@ public class RelatorioController implements Initializable {
         tableRelatorio.getItems().clear();
         
         /*verificar com Luan (conflito RelatorioController e LinhaTabelaRelatorio)*/
-String sql = "SELECT cliente.nome, pedido.idPedido,produto.id, produto.preco,"
-+ "pedido.dataPedido FROM pedido "
-+ "INNER JOIN cliente ON pedido.idcliente = cliente.id "
-+ "INNER JOIN itemPedido ON pedido.idPedido = itemPedido.idPedido "
-+ "INNER JOIN produto ON itemPedido.idProduto = produto.id ";
+String sql = "SELECT cliente.nome, pedido.idPedido, produto.titulo, precoProduto, pedido.dataPedido  from pedido "
+      +"INNER JOIN cliente ON pedido.idCliente = cliente.id "
+      +"INNER JOIN itemPedido ON pedido.idPedido= itemPedido.idPedido "
+      +"INNER JOIN produto ON itemPedido.idPedido = produto.id ";
+      //+"WHERE pedido.dataPedido > ? AND pedido.dataPedido < ? ";
 
 //Verificar Luan (por Leonardo)
 try(PreparedStatement ps= db.connect().prepareStatement(sql)){
