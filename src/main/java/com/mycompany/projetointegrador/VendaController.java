@@ -85,7 +85,7 @@ public class VendaController implements Initializable {
             if (rsKeys.next()) {
                 int idPedido = rsKeys.getInt(1);
                 registrarItensPedido(idPedido);
-                //decrementarEstoque();
+                decrementarEstoque();
                 cancelarPedido(event);
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setContentText("Pedido Realizado");
@@ -115,18 +115,20 @@ public class VendaController implements Initializable {
         }
     }
 
-   /*private void decrementarEstoque() {
+   private void decrementarEstoque() {
+        //qtdatual - informado
         for (int i = 0; i < tableVenda.getItems().size(); i++) {
-            String sql = "UPDATE produto SET qtd = ? WHERE id = ?";
+            String sql = "UPDATE produto SET qtd = (qtd - ?) WHERE id = ?";
             try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
-                ps.setInt(1, tableVenda.getItems().get(i).getColunaCodigo());
+                ps.setInt(1, tableVenda.getItems().get(i).getColunaQtd());
+                ps.setInt(2, tableVenda.getItems().get(i).getColunaCodigo());
 
                 ps.execute();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-    }*/
+    }
 
     
     @FXML
