@@ -15,6 +15,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class RelatorioController implements Initializable {
@@ -37,6 +38,8 @@ public class RelatorioController implements Initializable {
     private DatePicker dtDe;
     @FXML
     private DatePicker dtAte;
+    @FXML
+    private TextField editTotal;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -80,7 +83,8 @@ public class RelatorioController implements Initializable {
             ps.setDate(2, Date.valueOf(dtAte.getValue()));
 
             ResultSet rs = ps.executeQuery();
-
+            
+            float total = 0;
             while (rs.next()) {
                 LinhaTabelaRelatorio ltr = new LinhaTabelaRelatorio(
                         rs.getString("nome"),
@@ -90,7 +94,9 @@ public class RelatorioController implements Initializable {
                         rs.getInt("qtd"),
                         rs.getDouble("precoProduto")
                 );
-              
+                total += rs.getFloat("precoProduto");
+                
+                editTotal.setText(String.valueOf(total));
                 tableRelatorio.getItems().add(ltr);
                 tableRelatorio.refresh();
             }
