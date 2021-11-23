@@ -50,8 +50,8 @@ public class RelatorioController implements Initializable {
      colunaQtd.setCellValueFactory(new PropertyValueFactory("Qtd"));
      colunaTotal.setCellValueFactory(new PropertyValueFactory("Total"));
      
-     LinhaTabelaRelatorio ltr = new LinhaTabelaRelatorio("Leonardo", 50, LocalDate.now() , "O Pequeno Príncipe", 30, 50.00);
-     tableRelatorio.getItems().add(ltr);
+     //LinhaTabelaRelatorio ltr = new LinhaTabelaRelatorio("Leonardo", 50, LocalDate.now() , "O Pequeno Príncipe", 30, 50.00);
+     //tableRelatorio.getItems().add(ltr);
     }
 
     @FXML
