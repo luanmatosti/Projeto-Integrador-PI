@@ -43,15 +43,15 @@ public class RelatorioController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-     colunaCliente.setCellValueFactory(new PropertyValueFactory("colunaCliente"));
-     colunaCodVenda.setCellValueFactory(new PropertyValueFactory("colunaCodVenda"));
-     colunaData.setCellValueFactory(new PropertyValueFactory("colunaData"));   
-     colunaProduto.setCellValueFactory(new PropertyValueFactory("colunaProduto"));
-     colunaQtd.setCellValueFactory(new PropertyValueFactory("colunaQtd"));
-     colunaTotal.setCellValueFactory(new PropertyValueFactory("colunaTotal"));
+     colunaCliente.setCellValueFactory(new PropertyValueFactory("cliente"));
+     colunaCodVenda.setCellValueFactory(new PropertyValueFactory("CodVenda"));
+     colunaData.setCellValueFactory(new PropertyValueFactory("Data"));   
+     colunaProduto.setCellValueFactory(new PropertyValueFactory("Produto"));
+     colunaQtd.setCellValueFactory(new PropertyValueFactory("Qtd"));
+     colunaTotal.setCellValueFactory(new PropertyValueFactory("Total"));
      
      LinhaTabelaRelatorio ltr = new LinhaTabelaRelatorio("Leonardo", 50, LocalDate.now() , "O Pequeno Príncipe", 30, 50.00);
-        
+     tableRelatorio.getItems().add(ltr);
     }
 
     @FXML
