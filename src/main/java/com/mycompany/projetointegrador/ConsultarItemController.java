@@ -94,7 +94,7 @@ public class ConsultarItemController implements Initializable {
         if (linha != null) {
 
             int id = linha.getId();
-            String sql = "DELETE FROM produto WHERE id = ?";
+            String sql = "DELETE FROM produto WHERE id = ?"; //arrumar aqui
             try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
                 ps.setInt(1, id);
 
