@@ -74,8 +74,12 @@ public class ConsultarClienteController implements Initializable {
 
     @FXML
     private void apagar(ActionEvent event) {
+        if(App.perguntar("Excluir? ", "Confirma exclusão?", "A operação não poderá ser desfeita")){
+       
+        
+        
         LinhaTabelaCliente linha = tableCliente.getSelectionModel().getSelectedItem();
-
+        
         if (linha != null) {
 
             int id = linha.getId();
@@ -87,6 +91,7 @@ public class ConsultarClienteController implements Initializable {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
         }
     }
 

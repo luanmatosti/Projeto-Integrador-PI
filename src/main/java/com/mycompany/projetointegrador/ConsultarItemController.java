@@ -89,6 +89,7 @@ public class ConsultarItemController implements Initializable {
 
     @FXML
     private void deletar(ActionEvent event) {
+        if(App.perguntar("Excluir? ", "Confirma exclusão?", "A operação não poderá ser desfeita")){
         LinhaTabelaProduto linha = tableProduto.getSelectionModel().getSelectedItem();
 
         if (linha != null) {
@@ -102,6 +103,7 @@ public class ConsultarItemController implements Initializable {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
         }
     }
 
