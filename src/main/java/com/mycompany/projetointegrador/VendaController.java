@@ -87,6 +87,7 @@ public class VendaController implements Initializable {
                 registrarItensPedido(idPedido);
                 decrementarEstoque();
                 cancelarPedido(event);
+                totalPedido.clear();
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setContentText("Pedido Realizado");
                 alert.showAndWait();

@@ -90,11 +90,11 @@ public class RelatorioController implements Initializable {
                         rs.getString("nome"),
                         rs.getInt("idPedido"),
                         rs.getDate("dataPedido").toLocalDate(),
-                        rs.getString("titulo"),
+                        rs.getString("titulo"),                        
                         rs.getInt("qtd"),
                         rs.getDouble("precoProduto")
                 );
-                total += rs.getFloat("precoProduto");
+                total += rs.getFloat("precoProduto");                
                 
                 editTotal.setText(String.valueOf(total));
                 tableRelatorio.getItems().add(ltr);
