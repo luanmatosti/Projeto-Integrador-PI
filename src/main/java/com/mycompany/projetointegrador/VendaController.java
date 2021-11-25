@@ -186,21 +186,26 @@ public class VendaController implements Initializable {
             ps.setInt(1, Integer.parseInt(editProduto.getText()));
 
             ResultSet rs = ps.executeQuery();
+            
             float total = 0;
             
-            if (rs.next()) {
+            //mudei de if para while para testar função total dos produtos
+            while (rs.next()) {
                 LinhaTabelaVenda ltv = new LinhaTabelaVenda(
                         rs.getInt("id"),
                         rs.getString("titulo"),
                         Integer.parseInt(editQtdProduto.getText()),
-                        rs.getFloat("preco"));
+                        rs.getFloat("preco")
+                );
                 
-                total += rs.getFloat("preco");
+                total += Float.parseFloat(editQtdProduto.getText())*rs.getFloat("preco");
+                
                 tableVenda.getItems().add(ltv);
-                totalPedido.setText(String.valueOf(total));
                 editProduto.clear();
                 editQtdProduto.clear();
             }
+            tableVenda.refresh();
+            totalPedido.setText(String.valueOf(total));
             
         } catch (Exception e) {
             e.printStackTrace();
