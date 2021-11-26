@@ -54,7 +54,7 @@ public class VendaController implements Initializable {
     private Label labelCliente;
 
     private Integer idCliente = null;
-    
+
     private float total = 0;
 
     /**
@@ -71,7 +71,7 @@ public class VendaController implements Initializable {
         dataPedido.setValue(LocalDate.now());
         //LinhaTabelaVenda ltv = new LinhaTabelaVenda(1,"1984",1,1);
         //tableVenda.getItems().add(ltv);
-        
+
     }
 
     @FXML
@@ -121,7 +121,7 @@ public class VendaController implements Initializable {
         }
     }
 
-   private void decrementarEstoque() {
+    private void decrementarEstoque() {
         //qtdatual - informado
         for (int i = 0; i < tableVenda.getItems().size(); i++) {
             String sql = "UPDATE produto SET qtd = (qtd - ?) WHERE id = ?";
@@ -136,7 +136,6 @@ public class VendaController implements Initializable {
         }
     }
 
-    
     @FXML
     private void removerProduto(ActionEvent event) {
         if (tableVenda.getSelectionModel().getSelectedItem() == null) {
@@ -192,27 +191,40 @@ public class VendaController implements Initializable {
             ps.setInt(1, Integer.parseInt(editProduto.getText()));
 
             ResultSet rs = ps.executeQuery();
-            
-           
-            
+
             //mudei de if para while para testar função total dos produtos
             while (rs.next()) {
-                LinhaTabelaVenda ltv = new LinhaTabelaVenda(
-                        rs.getInt("id"),
-                        rs.getString("titulo"),
-                        Integer.parseInt(editQtdProduto.getText()),
-                        rs.getFloat("preco")
-                );
-                
-                total += Float.parseFloat(editQtdProduto.getText())*rs.getFloat("preco");
-                
-                tableVenda.getItems().add(ltv);
-                editProduto.clear();
-                editQtdProduto.clear();
+
+                for (LinhaTabelaVenda ltv : tableVenda.getItems()) {
+                    if (ltv.getColunaCodigo() == Integer.parseInt(editProduto.getText())) {
+                        Alert alert = new Alert(AlertType.INFORMATION);
+                        alert.setContentText("Item duplicado");
+                        alert.showAndWait();
+                        return;
+                    }
+                }
+                if (rs.getInt("qtd") < (Integer.parseInt(editQtdProduto.getText()))) {
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setContentText("Quantidade insuficiente");
+                    alert.showAndWait();
+                } else {
+                    LinhaTabelaVenda ltv = new LinhaTabelaVenda(
+                            rs.getInt("id"),
+                            rs.getString("titulo"),
+                            Integer.parseInt(editQtdProduto.getText()),
+                            rs.getFloat("preco")
+                    );
+
+                    total += Float.parseFloat(editQtdProduto.getText()) * rs.getFloat("preco");
+
+                    tableVenda.getItems().add(ltv);
+                    editProduto.clear();
+                    editQtdProduto.clear();
+                }
             }
             tableVenda.refresh();
             totalPedido.setText(String.valueOf(total));
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -224,8 +236,32 @@ public class VendaController implements Initializable {
             return;
         }
 
-        LinhaTabelaVenda ltv = tableVenda.getSelectionModel().getSelectedItem();
-        ltv.setColunaQtd(Integer.parseInt(editQtdProduto.getText()));
-        tableVenda.refresh();
+        String sql = "SELECT TOP 1 * FROM produto WHERE id = ?";
+
+        try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
+            ps.setInt(1, tableVenda.getSelectionModel().getSelectedItem().getColunaCodigo());
+
+            ResultSet rs = ps.executeQuery();
+
+            //mudei de if para while para testar função total dos produtos
+            while (rs.next()) {
+
+                if (rs.getInt("qtd") < (Integer.parseInt(editQtdProduto.getText()))) {
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setContentText("Quantidade insuficiente");
+                    alert.showAndWait();
+                } else {
+
+                    LinhaTabelaVenda ltv = tableVenda.getSelectionModel().getSelectedItem();
+                    total -= ltv.getColunaQtd() * rs.getFloat("preco");
+                    ltv.setColunaQtd(Integer.parseInt(editQtdProduto.getText()));
+                    total += Float.parseFloat(editQtdProduto.getText()) * rs.getFloat("preco");
+                    tableVenda.refresh();
+                    totalPedido.setText(String.valueOf(total));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
