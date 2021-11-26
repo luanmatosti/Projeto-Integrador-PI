@@ -9,6 +9,7 @@ import java.net.URL;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -53,6 +54,8 @@ public class VendaController implements Initializable {
     private Label labelCliente;
 
     private Integer idCliente = null;
+    
+    private float total = 0;
 
     /**
      * Initializes the controller class.
@@ -65,8 +68,10 @@ public class VendaController implements Initializable {
         colunaProduto.setCellValueFactory(new PropertyValueFactory("colunaProduto"));
         colunaQtd.setCellValueFactory(new PropertyValueFactory("colunaQtd"));
         colunaValor.setCellValueFactory(new PropertyValueFactory("colunaValor"));
+        dataPedido.setValue(LocalDate.now());
         //LinhaTabelaVenda ltv = new LinhaTabelaVenda(1,"1984",1,1);
         //tableVenda.getItems().add(ltv);
+        
     }
 
     @FXML
@@ -188,7 +193,7 @@ public class VendaController implements Initializable {
 
             ResultSet rs = ps.executeQuery();
             
-            float total = 0;
+           
             
             //mudei de if para while para testar função total dos produtos
             while (rs.next()) {

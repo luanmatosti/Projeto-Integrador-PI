@@ -61,7 +61,7 @@ public class RelatorioController implements Initializable {
     private void pesquisar(ActionEvent event) {
         long dias = DAYS.between(dtDe.getValue(), dtAte.getValue().plusDays(1));
 
-        if (dias < 0 || dias > 31) {
+        if (dias <= 0 || dias >= 31) {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setContentText("A Data Inicial não pode ser maior do que a Data Final, "
                     + "e o período do relatório não pode exceder 30 dias.");
@@ -92,9 +92,9 @@ public class RelatorioController implements Initializable {
                         rs.getDate("dataPedido").toLocalDate(),
                         rs.getString("titulo"),                        
                         rs.getInt("qtd"),
-                        rs.getDouble("precoProduto")
+                        rs.getDouble("precoProduto")*rs.getInt("qtd")
                 );
-                total += rs.getFloat("precoProduto");                
+                total += rs.getFloat("precoProduto")*rs.getInt("qtd");                
                 
                 editTotal.setText(String.valueOf(total));
                 tableRelatorio.getItems().add(ltr);
