@@ -42,7 +42,11 @@
                      </children>
                   </HBox>
                   <Button layoutX="573.0" layoutY="14.0" mnemonicParsing="false" onAction="#pesquisar" text="Pesquisar" />
-                  <TextField fx:id="editTotal" layoutX="530.0" layoutY="365.0" promptText="Total" />
+                  <HBox layoutX="360.0" layoutY="356.0" prefHeight="27.0" prefWidth="146.0" AnchorPane.rightAnchor="8.0">
+                     <children>
+                        <TextField fx:id="editTotal" promptText="Total" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
                </children>
             </AnchorPane>
         </content>
