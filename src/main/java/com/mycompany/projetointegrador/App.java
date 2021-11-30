@@ -23,6 +23,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("TelaPrincipal"), 700, 455);
+        scene.getStylesheets().add(getClass().getResource("stylesheet.css").toString()); 
         stage.setScene(scene);
         stage.setMinWidth(727);
         stage.setMinHeight(455);

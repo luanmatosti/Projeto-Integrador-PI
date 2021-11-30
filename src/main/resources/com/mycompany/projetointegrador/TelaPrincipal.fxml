@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="455.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projetointegrador.TelaPrincipalController">
+<AnchorPane id="AnchorPane" prefHeight="455.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projetointegrador.TelaPrincipalController">
    <children>
       <MenuBar layoutX="32.0" layoutY="26.0" prefWidth="700.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
@@ -34,6 +34,6 @@
             </Menu>
         </menus>
       </MenuBar>
-      <BorderPane fx:id="container" layoutX="148.0" layoutY="25.0" prefHeight="430.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0" />
+      <BorderPane fx:id="container" layoutX="148.0" layoutY="25.0" prefHeight="430.0" prefWidth="700.0" style="-fx-background-color: #c9deff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0" />
    </children>
 </AnchorPane>

@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="430.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projetointegrador.CadastrarItemController">
+<AnchorPane id="AnchorPane" prefHeight="430.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projetointegrador.CadastrarItemController">
    <children>
       <TitledPane animated="false" collapsible="false" layoutX="281.0" layoutY="136.0" text=" Cadastro Livro" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #c9deff;">
                <children>
                   <HBox layoutX="17.0" layoutY="14.0" prefHeight="34.0" prefWidth="664.0" spacing="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <children>
@@ -34,12 +34,9 @@
                      </children>
                   </HBox>
                   <Label layoutX="12.0" layoutY="80.0" text="Número de páginas: " />
-                  <HBox layoutX="14.0" layoutY="119.0" prefHeight="28.0" prefWidth="134.0" spacing="14.0" AnchorPane.leftAnchor="0.0">
-                     <children>
-                        <Button mnemonicParsing="false" onAction="#limpar" text="Limpar" HBox.hgrow="ALWAYS" />
-                        <Button mnemonicParsing="false" onAction="#cadastrar" text="Salvar" HBox.hgrow="ALWAYS" />
-                     </children>
-                  </HBox>
+                  <HBox layoutX="14.0" layoutY="119.0" prefHeight="28.0" prefWidth="134.0" spacing="14.0" AnchorPane.leftAnchor="0.0" />
+                  <Button id="red" layoutX="613.0" layoutY="121.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #00ba3b;" stylesheets="@stylesheet.css" text="Salvar" />
+                  <Button id="red" layoutX="548.0" layoutY="121.0" mnemonicParsing="false" onAction="#limpar" style="-fx-background-color: #e86161;" stylesheets="@stylesheet.css" text="Limpar" />
                </children>
             </AnchorPane>
         </content>

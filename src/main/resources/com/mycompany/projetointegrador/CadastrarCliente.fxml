@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="430.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projetointegrador.CadastrarClienteController">
+<AnchorPane id="AnchorPane" prefHeight="430.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projetointegrador.CadastrarClienteController">
    <children>
       <TitledPane animated="false" collapsible="false" text="Cliente" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #c9deff;">
                <children>
                   <Label layoutX="13.0" layoutY="16.0" prefHeight="17.0" prefWidth="104.0" text="Dados Pessoais:" />
                   <Label layoutX="13.0" layoutY="157.0" text="Endereço:" />
@@ -61,8 +61,8 @@
                   </HBox>
                   <HBox layoutX="204.0" layoutY="325.0" prefHeight="32.0" prefWidth="136.0" spacing="14.0" AnchorPane.rightAnchor="0.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#limpar" text="Limpar" HBox.hgrow="ALWAYS" />
-                        <Button mnemonicParsing="false" onAction="#cadastrar" text="Salvar" HBox.hgrow="ALWAYS" />
+                        <Button id="red" mnemonicParsing="false" onAction="#limpar" style="-fx-background-color: #eb7571;" stylesheets="@stylesheet.css" text="Limpar" HBox.hgrow="ALWAYS" />
+                        <Button id="red" mnemonicParsing="false" onAction="#cadastrar" style="-fx-background-color: #00ba3b;" stylesheets="@stylesheet.css" text="Salvar" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                </children>

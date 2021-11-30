@@ -63,7 +63,7 @@ public class VendaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-
+           
         colunaCodigo.setCellValueFactory(new PropertyValueFactory("colunaCodigo"));
         colunaProduto.setCellValueFactory(new PropertyValueFactory("colunaProduto"));
         colunaQtd.setCellValueFactory(new PropertyValueFactory("colunaQtd"));
