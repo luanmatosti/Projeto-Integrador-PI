@@ -10,9 +10,11 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.MenuButton;
@@ -79,7 +81,7 @@ public class CadastrarClienteController implements Initializable {
         if (idEdicao != null) {
             String sql = "SELECT * FROM cliente WHERE id = ?";
 
-            try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
+            try (PreparedStatement ps = db.connect().prepareStatement(sql)) {
                 ps.setInt(1, idEdicao);
                 ResultSet rs = ps.executeQuery();
 
@@ -133,10 +135,181 @@ public class CadastrarClienteController implements Initializable {
 
     @FXML
     private void cadastrar(ActionEvent event) {
+        if (txtNome.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Nome obrigatório");
+            alert.showAndWait();
+            return;
+        }
+        
+        if (txtSobrenome.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sobrenome obrigatório");
+            alert.showAndWait();
+            return;
+        }
+                
+        if (txtRg.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("RG obrigatório");
+            alert.showAndWait();
+            return;
+        }
+        
+        
+        
+        if (txtCpf.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("CPF obrigatório");
+            alert.showAndWait();
+            return;
+        }
+        
+        if (txtCep.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Cep obrigatório");
+            alert.showAndWait();
+            return;
+        }
+        
+        if (txtLogradouro.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Logradouro obrigatório");
+            alert.showAndWait();
+            return;
+        }
+        
+        if (txtNumero.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Numero obrigatório");
+            alert.showAndWait();
+            return;
+        }
+        
+        
+        if (txtComplemento.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Complemento obrigatório");
+            alert.showAndWait();
+            return;
+        }
+        
+        if (txtBairro.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Bairro obrigatório");
+            alert.showAndWait();
+            return;
+        }
+        
+        
+        if (txtCidade.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Cidade obrigatório");
+            alert.showAndWait();
+            return;
+        }
+        
+        if (txtEstado.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Estado obrigatório");
+            alert.showAndWait();
+            return;
+        }
+        
+        if (txtTelPrincipal.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Telefone Principal obrigatório");
+            alert.showAndWait();
+            return;
+        }
+        
+        if (txtTelSecundario.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Telefone Secundário obrigatório");
+            alert.showAndWait();
+            return;
+        }
+        
+        if (txtEmail.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Email obrigatório");
+            alert.showAndWait();
+            return;
+        }
+        
+        
+        
+        
+        
+        if (!Pattern.compile("^[A-Za-z]+$").matcher(txtNome.getText()).matches()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Nome inválido");
+            alert.showAndWait();
+            return;
+        }
+        
+        
+        
+        
+        
+        if (!Pattern.compile("^[A-Za-z]+$").matcher(txtSobrenome.getText()).matches()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sobrenome inválido");
+            alert.showAndWait();
+            return;
+        }
+        
+        
+        
+        if (!Pattern.compile("^\\d{3}\\.\\d{3}\\.\\d{3}\\-\\d{2}$").matcher(txtCpf.getText()).matches()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("CPF inválido");
+            alert.showAndWait();
+            return;
+        }
+        
+        if (!Pattern.compile("^\\d{5}-\\d{3}$").matcher(txtCep.getText()).matches()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("CEP inválido");
+            alert.showAndWait();
+            return;
+        }
+        
+        if (!Pattern.compile("^[A-Za-z]+$").matcher(txtLogradouro.getText()).matches()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Logradouro inválido");
+            alert.showAndWait();
+            return;
+        }
+        
+        if (!Pattern.compile("^\\d$").matcher(txtNumero.getText()).matches()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Número da Residência inválido");
+            alert.showAndWait();
+            return;
+        }
+        
+        if (!Pattern.compile("^\\([1-9]{2}\\) 9[7-9]{1}[0-9]{3}-[0-9]{4}$").matcher(txtTelPrincipal.getText()).matches()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Telefone Principal inválido");
+            alert.showAndWait();
+            return;
+        }
+
+        if (!Pattern.compile("^\\([1-9]{2}\\) 9[7-9]{1}[0-9]{3}-[0-9]{4}$").matcher(txtTelSecundario.getText()).matches()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Telefone Secundário inválido");
+            alert.showAndWait();
+            return;
+        }
+
+        
+        
+        
         if (!estaEditando) {
             String sql = "INSERT INTO cliente (nome,sobrenome,dtNascimento,rg,cpf,genero,estadoCivil,cep,logradouro,numero,complemento,bairro,cidade,estado,telPrincipal,telSecundario,email) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
-            try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
+            try (PreparedStatement ps = db.connect().prepareStatement(sql)) {
 
                 ps.setString(1, txtNome.getText());
                 ps.setString(2, txtSobrenome.getText());
@@ -165,7 +338,7 @@ public class CadastrarClienteController implements Initializable {
         } else {
             String sql = "UPDATE cliente SET nome = ?,sobrenome = ?,dtNascimento = ?,rg = ?,cpf = ?,genero = ?,estadoCivil = ?,cep = ?,logradouro = ?,numero = ?,complemento = ?,bairro = ?,cidade = ?,estado = ?,telPrincipal = ?,telSecundario = ?,email = ? WHERE id = ?";
 
-            try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
+            try (PreparedStatement ps = db.connect().prepareStatement(sql)) {
                 ps.setString(1, txtNome.getText());
                 ps.setString(2, txtSobrenome.getText());
                 ps.setDate(3, Date.valueOf(dtNascimento.getValue()));
