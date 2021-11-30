@@ -9,7 +9,7 @@ public class LinhaTabelaCliente {
     private String email;
     private String cpf;
 
-    public LinhaTabelaCliente(int id,String nome, String sobrenome, String telPrincipal, String email, String cpf) {
+    public LinhaTabelaCliente(int id, String nome, String sobrenome, String telPrincipal, String email, String cpf) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
@@ -17,7 +17,7 @@ public class LinhaTabelaCliente {
         this.email = email;
         this.cpf = cpf;
     }
-    
+
     public int getId() {
         return id;
     }

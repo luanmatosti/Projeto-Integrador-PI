@@ -74,24 +74,22 @@ public class ConsultarClienteController implements Initializable {
 
     @FXML
     private void apagar(ActionEvent event) {
-        if(App.perguntar("Excluir? ", "Confirma exclusão?", "A operação não poderá ser desfeita")){
-       
-        
-        
-        LinhaTabelaCliente linha = tableCliente.getSelectionModel().getSelectedItem();
-        
-        if (linha != null) {
+        if (App.perguntar("Excluir? ", "Confirma exclusão?", "A operação não poderá ser desfeita")) {
 
-            int id = linha.getId();
-            String sql = "DELETE FROM cliente WHERE id = ?";
-            try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
-                ps.setInt(1, id);
+            LinhaTabelaCliente linha = tableCliente.getSelectionModel().getSelectedItem();
 
-                ps.execute();
-            } catch (Exception e) {
-                e.printStackTrace();
+            if (linha != null) {
+
+                int id = linha.getId();
+                String sql = "DELETE FROM cliente WHERE id = ?";
+                try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
+                    ps.setInt(1, id);
+
+                    ps.execute();                  
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
-        }
         }
     }
 
@@ -156,8 +154,8 @@ public class ConsultarClienteController implements Initializable {
 
     @FXML
     private void tratarCaixaPesquisar(KeyEvent event) {
-        if(event.getCode()== KeyCode.ENTER){
-        pesquisarCpf();
+        if (event.getCode() == KeyCode.ENTER) {
+            pesquisarCpf();
         }
     }
 }

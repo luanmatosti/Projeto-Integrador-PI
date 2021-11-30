@@ -25,6 +25,7 @@
                               <TableColumn fx:id="colunaData" text="Data" />
                               <TableColumn fx:id="colunaProduto" prefWidth="144.0" text="Nome do produto" />
                               <TableColumn fx:id="colunaQtd" prefWidth="75.0" text="Quantidade" />
+                              <TableColumn fx:id="colunaUnitario" prefWidth="75.0" text="Valor unit." />
                               <TableColumn fx:id="colunaTotal" prefWidth="75.0" text="Valor total" />
                           </columns>
                            <columnResizePolicy>
@@ -42,7 +43,7 @@
                      </children>
                   </HBox>
                   <Button layoutX="573.0" layoutY="14.0" mnemonicParsing="false" onAction="#pesquisar" text="Pesquisar" />
-                  <HBox layoutX="360.0" layoutY="356.0" prefHeight="27.0" prefWidth="146.0" AnchorPane.rightAnchor="8.0">
+                  <HBox layoutX="360.0" layoutY="356.0" prefHeight="27.0" prefWidth="146.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="8.0">
                      <children>
                         <TextField fx:id="editTotal" promptText="Total" HBox.hgrow="ALWAYS" />
                      </children>

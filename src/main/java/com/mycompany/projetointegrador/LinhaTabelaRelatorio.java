@@ -3,20 +3,22 @@ package com.mycompany.projetointegrador;
 import java.time.LocalDate;
 
 public class LinhaTabelaRelatorio {
-    
-private String cliente;
-private Integer CodVenda;
-private LocalDate Data;
-private String Produto;
-private Integer Qtd;
-private Double Total;
 
-    public LinhaTabelaRelatorio(String cliente, Integer CodVenda, LocalDate Data, String Produto, Integer Qtd, Double Total) {
+    private String cliente;
+    private Integer CodVenda;
+    private LocalDate Data;
+    private String Produto;
+    private Integer Qtd;
+    private Double Unitario;
+    private Double Total;
+
+    public LinhaTabelaRelatorio(String cliente, Integer CodVenda, LocalDate Data, String Produto, Integer Qtd, Double Unitario, Double Total) {
         this.cliente = cliente;
         this.CodVenda = CodVenda;
         this.Data = Data;
         this.Produto = Produto;
         this.Qtd = Qtd;
+        this.Unitario = Unitario;
         this.Total = Total;
     }
 
@@ -60,6 +62,14 @@ private Double Total;
         this.Qtd = Qtd;
     }
 
+    public Double getUnitario() {
+        return Unitario;
+    }
+
+    public void setUnitario(Double Unitario) {
+        this.Unitario = Unitario;
+    }
+
     public Double getTotal() {
         return Total;
     }
@@ -68,7 +78,4 @@ private Double Total;
         this.Total = Total;
     }
 
-
-
-    
 }

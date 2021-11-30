@@ -40,6 +40,8 @@ public class RelatorioController implements Initializable {
     private DatePicker dtAte;
     @FXML
     private TextField editTotal;
+    @FXML
+    private TableColumn<LinhaTabelaRelatorio, Double> colunaUnitario;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -49,6 +51,7 @@ public class RelatorioController implements Initializable {
         colunaData.setCellValueFactory(new PropertyValueFactory("Data"));
         colunaProduto.setCellValueFactory(new PropertyValueFactory("Produto"));
         colunaQtd.setCellValueFactory(new PropertyValueFactory("Qtd"));
+        colunaUnitario.setCellValueFactory(new PropertyValueFactory("Unitario"));
         colunaTotal.setCellValueFactory(new PropertyValueFactory("Total"));
 
         /*LinhaTabelaRelatorio ltr = new LinhaTabelaRelatorio("Leonardo", 50, LocalDate.now() , "O Pequeno Príncipe", 30, 50.00);
@@ -70,32 +73,31 @@ public class RelatorioController implements Initializable {
         }
         tableRelatorio.getItems().clear();
 
-       
         String sql = "SELECT cliente.nome, pedido.idPedido, produto.titulo,itemPedido.qtd, itemPedido.precoProduto, pedido.dataPedido  from pedido "
                 + "INNER JOIN cliente ON pedido.idCliente = cliente.id "
                 + "INNER JOIN itemPedido ON pedido.idPedido= itemPedido.idPedido "
                 + "INNER JOIN produto ON itemPedido.idProduto = produto.id "
                 + "WHERE pedido.dataPedido >= ? AND pedido.dataPedido <= ? ";
 
-
-        try (PreparedStatement ps = db.connect().prepareStatement(sql)) {
+        try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
             ps.setDate(1, Date.valueOf(dtDe.getValue()));
             ps.setDate(2, Date.valueOf(dtAte.getValue()));
 
             ResultSet rs = ps.executeQuery();
-            
+
             float total = 0;
             while (rs.next()) {
                 LinhaTabelaRelatorio ltr = new LinhaTabelaRelatorio(
                         rs.getString("nome"),
                         rs.getInt("idPedido"),
                         rs.getDate("dataPedido").toLocalDate(),
-                        rs.getString("titulo"),                        
+                        rs.getString("titulo"),
                         rs.getInt("qtd"),
-                        rs.getDouble("precoProduto")*rs.getInt("qtd")
+                        rs.getDouble("precoProduto"),
+                        rs.getDouble("precoProduto") * rs.getInt("qtd")
                 );
-                total += rs.getFloat("precoProduto")*rs.getInt("qtd");                
-                
+                total += rs.getFloat("precoProduto") * rs.getInt("qtd");
+
                 editTotal.setText(String.valueOf(total));
                 tableRelatorio.getItems().add(ltr);
                 tableRelatorio.refresh();

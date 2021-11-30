@@ -81,29 +81,29 @@ public class ConsultarItemController implements Initializable {
     @FXML
     private void alterar(ActionEvent event) throws IOException {
         LinhaTabelaProduto linha = tableProduto.getSelectionModel().getSelectedItem();
-        if(linha != null){
+        if (linha != null) {
             int id = linha.getId();
-            App.abrirTelaItem(id);    
+            App.abrirTelaItem(id);
         }
     }
 
     @FXML
     private void deletar(ActionEvent event) {
-        if(App.perguntar("Excluir? ", "Confirma exclusão?", "A operação não poderá ser desfeita")){
-        LinhaTabelaProduto linha = tableProduto.getSelectionModel().getSelectedItem();
+        if (App.perguntar("Excluir? ", "Confirma exclusão?", "A operação não poderá ser desfeita")) {
+            LinhaTabelaProduto linha = tableProduto.getSelectionModel().getSelectedItem();
 
-        if (linha != null) {
+            if (linha != null) {
 
-            int id = linha.getId();
-            String sql = "DELETE FROM produto WHERE id = ?"; //arrumar aqui
-            try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
-                ps.setInt(1, id);
+                int id = linha.getId();
+                String sql = "DELETE FROM produto WHERE id = ?"; //arrumar aqui
+                try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
+                    ps.setInt(1, id);
 
-                ps.execute();
-            } catch (Exception e) {
-                e.printStackTrace();
+                    ps.execute();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
-        }
         }
     }
 
@@ -152,8 +152,8 @@ public class ConsultarItemController implements Initializable {
 
     @FXML
     private void tratarCaixaPesquisar(KeyEvent event) {
-        if(event.getCode()== KeyCode.ENTER){
-        pesquisarTitulo();
+        if (event.getCode() == KeyCode.ENTER) {
+            pesquisarTitulo();
         }
     }
 }

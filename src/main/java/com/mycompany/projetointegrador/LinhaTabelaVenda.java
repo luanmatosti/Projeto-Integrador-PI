@@ -10,6 +10,7 @@ package com.mycompany.projetointegrador;
  * @author lssch
  */
 public class LinhaTabelaVenda {
+
     private int colunaCodigo;
     private String colunaProduto;
     private int ColunaQtd;
@@ -53,5 +54,5 @@ public class LinhaTabelaVenda {
     public void setColunaValor(float ColunaValor) {
         this.ColunaValor = ColunaValor;
     }
-            
+
 }

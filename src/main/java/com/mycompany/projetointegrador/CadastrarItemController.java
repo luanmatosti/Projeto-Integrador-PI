@@ -40,7 +40,7 @@ public class CadastrarItemController implements Initializable {
     private TextField txtPreco;
     @FXML
     private TextField txtQtd;
-    
+
     public static Integer idEdicao = null;
     private boolean estaEditando = false;
 
@@ -61,15 +61,15 @@ public class CadastrarItemController implements Initializable {
         comboCategoria.getItems().add("História em Quadrinhos");
         comboCategoria.getItems().add("Literatura");
         comboCategoria.getItems().add("Terror");
-        
-        if(idEdicao != null) {
+
+        if (idEdicao != null) {
             String sql = "SELECT * FROM produto WHERE id = ?";
-            
-            try(PreparedStatement ps = db.connect().prepareStatement(sql)){
+
+            try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
                 ps.setInt(1, idEdicao);
                 ResultSet rs = ps.executeQuery();
-                
-                if(rs.next()){
+
+                if (rs.next()) {
                     txtAutor.setText(rs.getString("autor"));
                     txtTitulo.setText(rs.getString("titulo"));
                     txtEditora.setText(rs.getString("editora"));
@@ -78,12 +78,11 @@ public class CadastrarItemController implements Initializable {
                     comboCategoria.setValue(rs.getString("categoria"));
                     txtPreco.setText(String.valueOf(rs.getDouble("preco")));
                     txtQtd.setText(String.valueOf(rs.getInt("qtd")));
-                    
+
                     estaEditando = true;
                 }
-            }
-            catch(Exception e){
-            e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
@@ -114,15 +113,13 @@ public class CadastrarItemController implements Initializable {
                 ps.setString(6, comboCategoria.getSelectionModel().getSelectedItem().toString());
                 ps.setDouble(7, Double.parseDouble(txtPreco.getText()));
                 ps.setInt(8, Integer.parseInt(txtQtd.getText()));
-                
 
                 ps.execute();
-                limparTela();     
+                limparTela();
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        } 
-        else {
+        } else {
             String sql = "UPDATE produto SET autor = ?, titulo = ?, editora = ?, dtPublicacao = ?, nmrPagina = ?, categoria = ?, preco = ?, qtd = ? WHERE id = ?";
 
             try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
@@ -138,10 +135,10 @@ public class CadastrarItemController implements Initializable {
 
                 ps.execute();
                 limparTela();
-                
+
                 estaEditando = false;
                 idEdicao = null;
-   
+
             } catch (Exception e) {
                 e.printStackTrace();
             }

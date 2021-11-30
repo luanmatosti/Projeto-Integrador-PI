@@ -9,7 +9,7 @@ public class LinhaTabelaProduto {
     private double preco;
     private int quantidade;
 
-    public LinhaTabelaProduto(int id,String titulo, String autor, String categoria, double preco, int quantidade) {
+    public LinhaTabelaProduto(int id, String titulo, String autor, String categoria, double preco, int quantidade) {
         this.id = id;
         this.titulo = titulo;
         this.autor = autor;
@@ -25,7 +25,7 @@ public class LinhaTabelaProduto {
     public void setId(int id) {
         this.id = id;
     }
-    
+
     public String getTitulo() {
         return titulo;
     }

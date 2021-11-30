@@ -33,7 +33,7 @@
                   </HBox>
                   <HBox layoutX="190.0" layoutY="14.0" prefHeight="29.0" prefWidth="357.0" spacing="14.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="141.39999999999998">
                      <children>
-                        <TextField fx:id="txtPesquisa" onKeyPressed="#tratarCaixaPesquisar" prefHeight="25.0" prefWidth="264.0" HBox.hgrow="ALWAYS" />
+                        <TextField fx:id="txtPesquisa" onKeyPressed="#tratarCaixaPesquisar" prefHeight="25.0" prefWidth="264.0" promptText="Título" HBox.hgrow="ALWAYS" />
                         <Button mnemonicParsing="false" onAction="#limpar" text="Limpar" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
