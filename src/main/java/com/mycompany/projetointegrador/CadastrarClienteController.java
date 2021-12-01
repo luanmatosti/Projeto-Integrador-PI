@@ -261,14 +261,14 @@ public class CadastrarClienteController implements Initializable {
         
         
         
-        if (!Pattern.compile("^\\d{3}\\.\\d{3}\\.\\d{3}\\-\\d{2}$").matcher(txtCpf.getText()).matches()) {
+        if (!Pattern.compile("^\\d{11}$").matcher(txtCpf.getText()).matches()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("CPF inválido");
             alert.showAndWait();
             return;
         }
         
-        if (!Pattern.compile("^\\d{5}-\\d{3}$").matcher(txtCep.getText()).matches()) {
+        if (!Pattern.compile("^\\d{8}$").matcher(txtCep.getText()).matches()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("CEP inválido");
             alert.showAndWait();
@@ -289,14 +289,14 @@ public class CadastrarClienteController implements Initializable {
             return;
         }
         
-        if (!Pattern.compile("^\\([1-9]{2}\\) 9[7-9]{1}[0-9]{3}-[0-9]{4}$").matcher(txtTelPrincipal.getText()).matches()) {
+        if (!Pattern.compile("^\\d{11}$").matcher(txtTelPrincipal.getText()).matches()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("Telefone Principal inválido");
             alert.showAndWait();
             return;
         }
 
-        if (!Pattern.compile("^\\([1-9]{2}\\) 9[7-9]{1}[0-9]{3}-[0-9]{4}$").matcher(txtTelSecundario.getText()).matches()) {
+        if (!Pattern.compile("^\\d{11}$").matcher(txtTelSecundario.getText()).matches()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("Telefone Secundário inválido");
             alert.showAndWait();
