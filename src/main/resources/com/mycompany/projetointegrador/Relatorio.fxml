@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="430.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projetointegrador.RelatorioController">
+<AnchorPane id="AnchorPane" prefHeight="430.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projetointegrador.RelatorioController">
    <children>
       <TitledPane animated="false" collapsible="false" layoutX="161.0" layoutY="75.0" text="Relatório" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <content>
@@ -50,8 +50,9 @@
                      </children>
                   </HBox>
                   <Button id="windows" layoutX="588.0" layoutY="14.0" mnemonicParsing="false" onAction="#pesquisar" prefHeight="25.0" prefWidth="78.0" stylesheets="@stylesheet.css" text="Pesquisar" />
-                  <HBox layoutX="360.0" layoutY="356.0" prefHeight="27.0" prefWidth="146.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="8.0">
+                  <HBox layoutX="234.0" layoutY="356.0" prefHeight="27.0" prefWidth="255.0" spacing="14.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="8.0">
                      <children>
+                        <Label text="Total do Período:" HBox.hgrow="ALWAYS" />
                         <TextField fx:id="editTotal" promptText="Total" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>

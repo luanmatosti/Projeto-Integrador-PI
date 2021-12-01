@@ -142,9 +142,23 @@ public class CadastrarClienteController implements Initializable {
             return;
         }
         
+        if (!Pattern.compile("^[A-Za-z ]+$").matcher(txtNome.getText()).matches()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Nome inválido.");
+            alert.showAndWait();
+            return;
+        }
+        
         if (txtSobrenome.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("Sobrenome obrigatório.");
+            alert.showAndWait();
+            return;
+        }
+        
+        if (!Pattern.compile("^[A-Za-z ]+$").matcher(txtSobrenome.getText()).matches()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sobrenome inválido.");
             alert.showAndWait();
             return;
         }
@@ -154,13 +168,32 @@ public class CadastrarClienteController implements Initializable {
             alert.setContentText("RG obrigatório.");
             alert.showAndWait();
             return;
-        }
-        
+        }        
         
         
         if (txtCpf.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("CPF obrigatório.");
+            alert.showAndWait();
+            return;
+        }
+        
+        if (!Pattern.compile("^\\d{11}$").matcher(txtCpf.getText()).matches()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("CPF inválido.");
+            alert.showAndWait();
+            return;
+        }
+        
+        if (comboGenero.getSelectionModel().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Gênero obrigatório.");
+            alert.showAndWait();
+            return;
+        }
+         if (comboEstadoCivil.getSelectionModel().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Estado Civil obrigatório..");
             alert.showAndWait();
             return;
         }
@@ -172,6 +205,13 @@ public class CadastrarClienteController implements Initializable {
             return;
         }
         
+        if (!Pattern.compile("^\\d{8}$").matcher(txtCep.getText()).matches()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("CEP inválido.");
+            alert.showAndWait();
+            return;
+        }
+        
         if (txtLogradouro.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("Logradouro obrigatório.");
@@ -179,9 +219,22 @@ public class CadastrarClienteController implements Initializable {
             return;
         }
         
+        if (!Pattern.compile("^[A-Za-z ]+$").matcher(txtLogradouro.getText()).matches()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Logradouro inválido");
+            alert.showAndWait();
+            return;
+        }
+        
         if (txtNumero.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("Número obrigatório.");
+            alert.showAndWait();
+            return;
+        }
+         if (!Pattern.compile("^[0-9]+$").matcher(txtNumero.getText()).matches()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Número inválido.");
             alert.showAndWait();
             return;
         }
@@ -223,9 +276,23 @@ public class CadastrarClienteController implements Initializable {
             return;
         }
         
+        if (!Pattern.compile("^\\d{11}$").matcher(txtTelPrincipal.getText()).matches()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Telefone Principal inválido");
+            alert.showAndWait();
+            return;
+        }
+        
         if (txtTelSecundario.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("Telefone Secundário obrigatório");
+            alert.showAndWait();
+            return;
+        }
+        
+        if (!Pattern.compile("^\\d{11}$").matcher(txtTelSecundario.getText()).matches()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Telefone Secundário inválido");
             alert.showAndWait();
             return;
         }
@@ -237,73 +304,7 @@ public class CadastrarClienteController implements Initializable {
             return;
         }
         
-        
-        
-        
-        
-        if (!Pattern.compile("^[A-Za-z ]+$").matcher(txtNome.getText()).matches()) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Nome inválido");
-            alert.showAndWait();
-            return;
-        }
-        
-        
-        
-        
-        
-        if (!Pattern.compile("^[A-Za-z ]+$").matcher(txtSobrenome.getText()).matches()) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Sobrenome inválido");
-            alert.showAndWait();
-            return;
-        }
-        
-        
-        
-        if (!Pattern.compile("^\\d{11}$").matcher(txtCpf.getText()).matches()) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("CPF inválido");
-            alert.showAndWait();
-            return;
-        }
-        
-        if (!Pattern.compile("^\\d{8}$").matcher(txtCep.getText()).matches()) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("CEP inválido");
-            alert.showAndWait();
-            return;
-        }
-        
-        if (!Pattern.compile("^[A-Za-z ]+$").matcher(txtLogradouro.getText()).matches()) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Logradouro inválido");
-            alert.showAndWait();
-            return;
-        }
-        
-        if (!Pattern.compile("^[0-9]+$").matcher(txtNumero.getText()).matches()) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Número da Residência inválido");
-            alert.showAndWait();
-            return;
-        }
-        
-        if (!Pattern.compile("^\\d{11}$").matcher(txtTelPrincipal.getText()).matches()) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Telefone Principal inválido");
-            alert.showAndWait();
-            return;
-        }
-
-        if (!Pattern.compile("^\\d{11}$").matcher(txtTelSecundario.getText()).matches()) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Telefone Secundário inválido");
-            alert.showAndWait();
-            return;
-        }
-
-        
+              
         
         
         if (!estaEditando) {
