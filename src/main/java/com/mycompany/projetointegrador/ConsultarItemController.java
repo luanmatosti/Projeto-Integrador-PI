@@ -13,6 +13,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -96,14 +97,18 @@ public class ConsultarItemController implements Initializable {
 
                 int id = linha.getId();
                 String sql = "DELETE FROM produto WHERE id = ?"; //arrumar aqui
-                try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
+                try (PreparedStatement ps = db.connect().prepareStatement(sql)) {
                     ps.setInt(1, id);
-
                     ps.execute();
+                    atualizarTabela();
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setContentText("Produto não pode ser deletado, pois já está relacionado a um pedido");
+                    alert.showAndWait();
                 }
+
             }
+
         }
     }
 
@@ -111,7 +116,7 @@ public class ConsultarItemController implements Initializable {
         tableProduto.getItems().clear();
 
         String sql = "SELECT * FROM produto";
-        try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
+        try (PreparedStatement ps = db.connect().prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -134,7 +139,7 @@ public class ConsultarItemController implements Initializable {
         tableProduto.getItems().clear();
         String sql = "SELECT * FROM produto WHERE titulo like ?";
 
-        try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
+        try (PreparedStatement ps = db.connect().prepareStatement(sql)) {
             ps.setString(1, "%" + txtPesquisa.getText() + "%");
 
             ResultSet rs = ps.executeQuery();

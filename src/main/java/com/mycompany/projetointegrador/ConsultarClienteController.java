@@ -13,6 +13,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -85,9 +86,12 @@ public class ConsultarClienteController implements Initializable {
                 try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
                     ps.setInt(1, id);
 
-                    ps.execute();                  
-                } catch (Exception e) {
-                    e.printStackTrace();
+                    ps.execute();  
+                    atualizarTabela();
+                } catch (Exception e) {                    
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setContentText("Cliente não pode ser deletado, pois já efetuou uma compra");
+                    alert.showAndWait();
                 }
             }
         }

@@ -10,9 +10,11 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -65,7 +67,7 @@ public class CadastrarItemController implements Initializable {
         if (idEdicao != null) {
             String sql = "SELECT * FROM produto WHERE id = ?";
 
-            try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
+            try (PreparedStatement ps = db.connect().prepareStatement(sql)) {
                 ps.setInt(1, idEdicao);
                 ResultSet rs = ps.executeQuery();
 
@@ -101,10 +103,101 @@ public class CadastrarItemController implements Initializable {
 
     @FXML
     private void cadastrar(ActionEvent event) {
+        if (txtAutor.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Autor obrigatório.");
+            alert.showAndWait();
+            return;
+        }
+
+        if (!Pattern.compile("^[A-Za-z ]+$").matcher(txtAutor.getText()).matches()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Autor inválido.");
+            alert.showAndWait();
+            return;
+        }
+
+        if (txtTitulo.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Título obrigatório.");
+            alert.showAndWait();
+            return;
+        }
+
+        if (!Pattern.compile("^[A-Za-z ]+$").matcher(txtTitulo.getText()).matches()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Título inválido.");
+            alert.showAndWait();
+            return;
+        }
+
+        if (txtEditora.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Editora obrigatório.");
+            alert.showAndWait();
+            return;
+        }
+
+        if (!Pattern.compile("^[A-Za-z ]+$").matcher(txtEditora.getText()).matches()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Editora inválido.");
+            alert.showAndWait();
+            return;
+        }
+
+        if (txtPagina.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Quantidade de Página obrigatório.");
+            alert.showAndWait();
+            return;
+        }
+
+        if (!Pattern.compile("^[0-9]+$").matcher(txtPagina.getText()).matches()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Quantidade de Página inválido.");
+            alert.showAndWait();
+            return;
+        }
+
+        if (comboCategoria.getSelectionModel().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Categoria obrigatório.");
+            alert.showAndWait();
+            return;
+        }
+
+        if (txtPreco.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Preço obrigatório.");
+            alert.showAndWait();
+            return;
+        }
+
+        if (!Pattern.compile("[0-9]+\\.?[0-9]*$").matcher(txtPreco.getText()).matches()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Preço inválido.");
+            alert.showAndWait();
+            return;
+        }
+
+        if (txtQtd.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Quantidade obrigatório.");
+            alert.showAndWait();
+            return;
+        }
+
+        if (!Pattern.compile("^[0-9]+$").matcher(txtQtd.getText()).matches()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Quantidade inválido.");
+            alert.showAndWait();
+            return;
+        }
+
         if (!estaEditando) {
             String sql = "INSERT INTO produto (autor, titulo, editora, dtPublicacao, nmrPagina, categoria, preco, qtd) VALUES (?,?,?,?,?,?,?,?)";
 
-            try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
+            try (PreparedStatement ps = db.connect().prepareStatement(sql)) {
                 ps.setString(1, txtAutor.getText());
                 ps.setString(2, txtTitulo.getText());
                 ps.setString(3, txtEditora.getText());
@@ -122,7 +215,7 @@ public class CadastrarItemController implements Initializable {
         } else {
             String sql = "UPDATE produto SET autor = ?, titulo = ?, editora = ?, dtPublicacao = ?, nmrPagina = ?, categoria = ?, preco = ?, qtd = ? WHERE id = ?";
 
-            try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
+            try (PreparedStatement ps = db.connect().prepareStatement(sql)) {
                 ps.setString(1, txtAutor.getText());
                 ps.setString(2, txtTitulo.getText());
                 ps.setString(3, txtEditora.getText());

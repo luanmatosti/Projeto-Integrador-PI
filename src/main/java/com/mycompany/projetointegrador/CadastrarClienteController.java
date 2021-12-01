@@ -221,7 +221,7 @@ public class CadastrarClienteController implements Initializable {
         
         if (!Pattern.compile("^[A-Za-z ]+$").matcher(txtLogradouro.getText()).matches()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Logradouro inválido");
+            alert.setContentText("Logradouro inválido.");
             alert.showAndWait();
             return;
         }
@@ -264,42 +264,42 @@ public class CadastrarClienteController implements Initializable {
         
         if (txtEstado.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Estado obrigatório");
+            alert.setContentText("Estado obrigatório.");
             alert.showAndWait();
             return;
         }
         
         if (txtTelPrincipal.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Telefone Principal obrigatório");
+            alert.setContentText("Telefone Principal obrigatório.");
             alert.showAndWait();
             return;
         }
         
         if (!Pattern.compile("^\\d{11}$").matcher(txtTelPrincipal.getText()).matches()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Telefone Principal inválido");
+            alert.setContentText("Telefone Principal inválido.");
             alert.showAndWait();
             return;
         }
         
         if (txtTelSecundario.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Telefone Secundário obrigatório");
+            alert.setContentText("Telefone Secundário obrigatório.");
             alert.showAndWait();
             return;
         }
         
         if (!Pattern.compile("^\\d{11}$").matcher(txtTelSecundario.getText()).matches()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Telefone Secundário inválido");
+            alert.setContentText("Telefone Secundário inválido.");
             alert.showAndWait();
             return;
         }
         
         if (txtEmail.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Email obrigatório");
+            alert.setContentText("Email obrigatório.");
             alert.showAndWait();
             return;
         }

@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -161,6 +162,20 @@ public class VendaController implements Initializable {
 
     @FXML
     private void procurarCliente(ActionEvent event) {
+        if (editCpf.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Cliente obrigatório.");
+            alert.showAndWait();
+            return;
+        }
+
+        if (!Pattern.compile("^\\d{11}$").matcher(editCpf.getText()).matches()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Cliente inválido.");
+            alert.showAndWait();
+            return;
+        }
+        
         String sql = "SELECT TOP 1 * FROM cliente WHERE  cpf = ?";
 
         try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
@@ -181,10 +196,37 @@ public class VendaController implements Initializable {
 
     @FXML
     private void adicionarProduto(ActionEvent event) {
-        if (editProduto.getText().isBlank() && editQtdProduto.getText().isBlank()) {
+        if (editProduto.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Produto obrigatório.");
+            alert.showAndWait();
             return;
         }
 
+        if (!Pattern.compile("^[0-9]+$").matcher(editProduto.getText()).matches()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Produto inválido.");
+            alert.showAndWait();
+            return;
+        }
+        
+        if (editQtdProduto.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Quantidade de produto obrigatório.");
+            alert.showAndWait();
+            return;
+        }
+
+        if (!Pattern.compile("^[0-9]+$").matcher(editQtdProduto.getText()).matches()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Quantidade de produto inválido.");
+            alert.showAndWait();
+            return;
+        }
+        if (editProduto.getText().isBlank() && editQtdProduto.getText().isBlank()) {
+            return;
+        }
+        
         String sql = "SELECT TOP 1 * FROM produto WHERE id = ?";
 
         try ( PreparedStatement ps = db.connect().prepareStatement(sql)) {
