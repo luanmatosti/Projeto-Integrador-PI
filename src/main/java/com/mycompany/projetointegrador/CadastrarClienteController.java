@@ -137,21 +137,21 @@ public class CadastrarClienteController implements Initializable {
     private void cadastrar(ActionEvent event) {
         if (txtNome.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Nome obrigatório");
+            alert.setContentText("Nome obrigatório.");
             alert.showAndWait();
             return;
         }
         
         if (txtSobrenome.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Sobrenome obrigatório");
+            alert.setContentText("Sobrenome obrigatório.");
             alert.showAndWait();
             return;
         }
                 
         if (txtRg.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("RG obrigatório");
+            alert.setContentText("RG obrigatório.");
             alert.showAndWait();
             return;
         }
@@ -160,28 +160,28 @@ public class CadastrarClienteController implements Initializable {
         
         if (txtCpf.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("CPF obrigatório");
+            alert.setContentText("CPF obrigatório.");
             alert.showAndWait();
             return;
         }
         
         if (txtCep.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Cep obrigatório");
+            alert.setContentText("CEP obrigatório.");
             alert.showAndWait();
             return;
         }
         
         if (txtLogradouro.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Logradouro obrigatório");
+            alert.setContentText("Logradouro obrigatório.");
             alert.showAndWait();
             return;
         }
         
         if (txtNumero.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Numero obrigatório");
+            alert.setContentText("Número obrigatório.");
             alert.showAndWait();
             return;
         }
@@ -189,14 +189,14 @@ public class CadastrarClienteController implements Initializable {
         
         if (txtComplemento.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Complemento obrigatório");
+            alert.setContentText("Complemento obrigatório.");
             alert.showAndWait();
             return;
         }
         
         if (txtBairro.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Bairro obrigatório");
+            alert.setContentText("Bairro obrigatório.");
             alert.showAndWait();
             return;
         }
@@ -204,7 +204,7 @@ public class CadastrarClienteController implements Initializable {
         
         if (txtCidade.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Cidade obrigatório");
+            alert.setContentText("Cidade obrigatório.");
             alert.showAndWait();
             return;
         }
@@ -241,7 +241,7 @@ public class CadastrarClienteController implements Initializable {
         
         
         
-        if (!Pattern.compile("^[A-Za-z]+$").matcher(txtNome.getText()).matches()) {
+        if (!Pattern.compile("^[A-Za-z ]+$").matcher(txtNome.getText()).matches()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("Nome inválido");
             alert.showAndWait();
@@ -252,7 +252,7 @@ public class CadastrarClienteController implements Initializable {
         
         
         
-        if (!Pattern.compile("^[A-Za-z]+$").matcher(txtSobrenome.getText()).matches()) {
+        if (!Pattern.compile("^[A-Za-z ]+$").matcher(txtSobrenome.getText()).matches()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("Sobrenome inválido");
             alert.showAndWait();
@@ -275,14 +275,14 @@ public class CadastrarClienteController implements Initializable {
             return;
         }
         
-        if (!Pattern.compile("^[A-Za-z]+$").matcher(txtLogradouro.getText()).matches()) {
+        if (!Pattern.compile("^[A-Za-z ]+$").matcher(txtLogradouro.getText()).matches()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("Logradouro inválido");
             alert.showAndWait();
             return;
         }
         
-        if (!Pattern.compile("^\\d$").matcher(txtNumero.getText()).matches()) {
+        if (!Pattern.compile("^[0-9]+$").matcher(txtNumero.getText()).matches()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("Número da Residência inválido");
             alert.showAndWait();
