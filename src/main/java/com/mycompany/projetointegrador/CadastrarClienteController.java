@@ -254,6 +254,13 @@ public class CadastrarClienteController implements Initializable {
             return;
         }
         
+        if (!Pattern.compile("^[A-Za-z ]+$").matcher(txtBairro.getText()).matches()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Bairro inválido.");
+            alert.showAndWait();
+            return;
+        }
+        
         
         if (txtCidade.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -262,9 +269,23 @@ public class CadastrarClienteController implements Initializable {
             return;
         }
         
+        if (!Pattern.compile("^[A-Za-z ]+$").matcher(txtCidade.getText()).matches()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Cidade inválido.");
+            alert.showAndWait();
+            return;
+        }
+        
         if (txtEstado.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("Estado obrigatório.");
+            alert.showAndWait();
+            return;
+        }
+        
+        if (!Pattern.compile("^[A-Za-z ]+$").matcher(txtEstado.getText()).matches()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Estado inválido.");
             alert.showAndWait();
             return;
         }

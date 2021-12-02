@@ -122,14 +122,7 @@ public class CadastrarItemController implements Initializable {
             alert.setContentText("Título obrigatório.");
             alert.showAndWait();
             return;
-        }
-
-        if (!Pattern.compile("^[A-Za-z ]+$").matcher(txtTitulo.getText()).matches()) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Título inválido.");
-            alert.showAndWait();
-            return;
-        }
+        }       
 
         if (txtEditora.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
