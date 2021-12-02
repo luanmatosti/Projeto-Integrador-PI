@@ -144,7 +144,7 @@ public class VendaController implements Initializable {
         }
 
         tableVenda.getItems().remove(tableVenda.getSelectionModel().getSelectedIndex());
-
+        
     }
 
     @FXML
@@ -157,7 +157,7 @@ public class VendaController implements Initializable {
         colunaValor = null;
         tableVenda.getItems().clear();
         dataPedido.setValue(null);
-
+        totalPedido.clear();  
     }
 
     @FXML
