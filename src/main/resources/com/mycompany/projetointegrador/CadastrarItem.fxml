@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="430.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projetointegrador.CadastrarItemController">
+<AnchorPane id="AnchorPane" prefHeight="430.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projetointegrador.CadastrarItemController">
    <children>
       <TitledPane animated="false" collapsible="false" layoutX="281.0" layoutY="136.0" text=" Cadastro Livro" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <content>
@@ -34,9 +34,11 @@
                      </children>
                   </HBox>
                   <Label layoutX="12.0" layoutY="80.0" text="Número de páginas: " />
-                  <HBox layoutX="14.0" layoutY="119.0" prefHeight="28.0" prefWidth="134.0" spacing="14.0" AnchorPane.leftAnchor="0.0" />
-                  <Button id="red" layoutX="613.0" layoutY="121.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #00ba3b;" stylesheets="@stylesheet.css" text="Salvar" />
-                  <Button id="red" layoutX="548.0" layoutY="121.0" mnemonicParsing="false" onAction="#limpar" style="-fx-background-color: #e86161;" stylesheets="@stylesheet.css" text="Limpar" />
+                  <HBox layoutX="14.0" layoutY="119.0" prefHeight="28.0" prefWidth="134.0" spacing="14.0" AnchorPane.rightAnchor="0.0">
+                     <children>
+                        <Button id="red" mnemonicParsing="false" onAction="#limpar" style="-fx-background-color: #e86161;" stylesheets="@stylesheet.css" text="Limpar" HBox.hgrow="ALWAYS" />
+                        <Button id="red" mnemonicParsing="false" onAction="#cadastrar" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #00ba3b;" stylesheets="@stylesheet.css" text="Salvar" HBox.hgrow="ALWAYS" />
+                     </children></HBox>
                </children>
             </AnchorPane>
         </content>
